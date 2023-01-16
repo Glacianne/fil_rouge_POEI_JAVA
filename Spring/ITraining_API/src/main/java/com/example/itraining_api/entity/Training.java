@@ -18,9 +18,8 @@ public class Training {
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
     public int id;
+    public String intitulé;
 
-    public int id_session;
-    
     public Date startDate;
 
     public Date endDate;
@@ -56,14 +55,6 @@ public class Training {
         this.endDate = endDate;
     }
 
-    public int getId_session() {
-        return id_session;
-    }
-
-    public void setId_session(int id_session) {
-        this.id_session = id_session;
-    }
-
     public Date getStartDate() {
         return startDate;
     }
@@ -96,8 +87,16 @@ public class Training {
         LearnerTraining = learnerTraining;
     }
 
-    public Training(int id_session, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> learnerTraining) {
-        this.id_session = id_session;
+    public String getIntitulé() {
+        return intitulé;
+    }
+
+    public void setIntitulé(String intitulé) {
+        this.intitulé = intitulé;
+    }
+
+    public Training(String intitulé, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> learnerTraining) {
+        this.intitulé = intitulé;
         this.startDate = startDate;
         this.endDate = endDate;
         this.listSession = listSession;
