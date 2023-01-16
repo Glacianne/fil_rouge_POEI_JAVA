@@ -4,15 +4,14 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-@Entity
+
 @Table(name="UserAccount")
-@Data
+@MappedSuperclass
 public class UserAccount {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
-    @Column(name = "user_id")
     private int id;
 
     private String firstName;
@@ -83,17 +82,4 @@ public class UserAccount {
 
     public UserAccount() {
     }
-
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "userAccount{" +
-                "id=" + id +
-                ", firstName=" + firstName +
-                ", lastName=" + lastName +
-                ", email=" + email +
-                ", phone=" + phone +
-                ", password=" + password +
-                '}';
-    }
-
 }
