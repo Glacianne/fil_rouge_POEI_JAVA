@@ -14,6 +14,7 @@
 	<mapping class="com.example.itraining_api.entity.UserAccount" />
     <mapping class="com.example.itraining_api.entity.TeacherAccount" />
     <mapping class="com.example.itraining_api.entity.LearnerAccount" />
+        <mapping class="com.example.itraining_api.entity.AdministratorAccount" />
     <mapping class="com.example.itraining_api.entity.Session" />
     <mapping class="com.example.itraining_api.entity.Training" />
     </session-factory>

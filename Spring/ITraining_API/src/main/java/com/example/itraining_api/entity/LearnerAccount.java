@@ -17,14 +17,10 @@ public class LearnerAccount extends UserAccount{
     @GenericGenerator(name = "native",strategy = "native")
     public int id;
 
-    public String entreprise;
 
     @ManyToOne
     @JoinColumn(name="TRAINING_ID")
     public Training trainingLearner;
-
-
-
 
 
     public int getId() {
@@ -35,5 +31,19 @@ public class LearnerAccount extends UserAccount{
         this.id = id;
     }
 
+    public Training getTrainingLearner() {
+        return trainingLearner;
+    }
 
+    public void setTrainingLearner(Training trainingLearner) {
+        this.trainingLearner = trainingLearner;
+    }
+
+    public LearnerAccount(String firstName, String lastName, String email, String phone, String password, Training trainingLearner) {
+        super(firstName, lastName, email, phone, password);
+        this.trainingLearner = trainingLearner;
+    }
+
+    public LearnerAccount() {
+    }
 }
