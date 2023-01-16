@@ -27,8 +27,8 @@ public class Training {
     @OneToMany(mappedBy = "trainingSession")
     public List<Session> listSession;
 
-    @OneToMany(mappedBy = "trainingLearner")
-    public List<LearnerAccount> LearnerTraining;
+    @OneToMany(mappedBy = "registeredTraining")
+    public List<LearnerAccount> registeredTraining;
 
     public int getId() {
         return id;
@@ -79,12 +79,12 @@ public class Training {
         this.listSession = listSession;
     }
 
-    public List<LearnerAccount> getLearnerTraining() {
-        return LearnerTraining;
+    public List<LearnerAccount> getRegisteredTraining() {
+        return registeredTraining;
     }
 
-    public void setLearnerTraining(List<LearnerAccount> learnerTraining) {
-        LearnerTraining = learnerTraining;
+    public void setRegisteredTraining(List<LearnerAccount> registeredTraining) {
+        registeredTraining = registeredTraining;
     }
 
     public String getIntitulé() {
@@ -95,12 +95,12 @@ public class Training {
         this.intitulé = intitulé;
     }
 
-    public Training(String intitulé, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> learnerTraining) {
+    public Training(String intitulé, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> registeredTraining) {
         this.intitulé = intitulé;
         this.startDate = startDate;
         this.endDate = endDate;
         this.listSession = listSession;
-        LearnerTraining = learnerTraining;
+        registeredTraining = registeredTraining;
     }
 
     public Training() {

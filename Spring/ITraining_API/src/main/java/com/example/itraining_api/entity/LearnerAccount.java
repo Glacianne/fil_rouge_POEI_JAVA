@@ -20,7 +20,7 @@ public class LearnerAccount extends UserAccount{
 
     @ManyToOne
     @JoinColumn(name="TRAINING_ID")
-    public Training trainingLearner;
+    public Training registeredTraining;
 
 
     public int getId() {
@@ -31,17 +31,17 @@ public class LearnerAccount extends UserAccount{
         this.id = id;
     }
 
-    public Training getTrainingLearner() {
-        return trainingLearner;
+    public Training getRegisteredTraining() {
+        return registeredTraining;
     }
 
-    public void setTrainingLearner(Training trainingLearner) {
-        this.trainingLearner = trainingLearner;
+    public void setRegisteredTraining(Training registeredTraining) {
+        this.registeredTraining = registeredTraining;
     }
 
     public LearnerAccount(String firstName, String lastName, String email, String phone, String password, Training trainingLearner) {
         super(firstName, lastName, email, phone, password);
-        this.trainingLearner = trainingLearner;
+        this.registeredTraining = trainingLearner;
     }
 
     public LearnerAccount() {
