@@ -19,18 +19,16 @@ public class Training {
     @GenericGenerator(name = "native",strategy = "native")
     public int id;
 
-    public String teacher;
-
     public int id_session;
     
     public Date startDate;
 
     public Date endDate;
 
- @OneToMany(mappedBy = "trainingSession")
+    @OneToMany(mappedBy = "trainingSession")
     public List<Session> listSession;
 
-   @OneToMany(mappedBy = "trainingLearner")
+    @OneToMany(mappedBy = "trainingLearner")
     public List<LearnerAccount> LearnerTraining;
 
     public int getId() {
@@ -41,13 +39,6 @@ public class Training {
         this.id = id;
     }
 
-    public String getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(String teacher) {
-        this.teacher = teacher;
-    }
 
     public Date getStart_date() {
         return startDate;
@@ -105,8 +96,7 @@ public class Training {
         LearnerTraining = learnerTraining;
     }
 
-    public Training(String teacher, int id_session, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> learnerTraining) {
-        this.teacher = teacher;
+    public Training(int id_session, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> learnerTraining) {
         this.id_session = id_session;
         this.startDate = startDate;
         this.endDate = endDate;
