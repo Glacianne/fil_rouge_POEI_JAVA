@@ -12,29 +12,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.itraining_api.entity.UserAccount;
+
 @RestController
-abstract class LoginController<User> {
+abstract class LoginController {
 
     @Autowired
-    private CrudRepository<User, Long> crudRepository;
+    private CrudRepository<UserAccount, Long> crudRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/createAccount")
-    public ResponseEntity<String> createAccountUser(@RequestBody User user){
-        User savedUser = null;
+    public ResponseEntity<String> createAccountUser(@RequestBody UserAccount user){
+        UserAccount savedUser = null;
         ResponseEntity<String> response = null;
         try {
             String hashPwd = passwordEncoder.encode(user.getPassword());
             user.setPassword(hashPwd);
             savedUser = crudRepository.save(user);
             if(savedUser.getId()>0){
-                response = ResponseEntity.status(HttpStatus.CREATED).body("User has succefully created");
+                response = ResponseEntity.status(HttpStatus.CREATED).body("User has succefully been created");
             }
         } catch (Exception e) {
             response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An exception has occured due to " + e.getMessage());
         }
+        return response;
     }
 
     @PostMapping("/login")
