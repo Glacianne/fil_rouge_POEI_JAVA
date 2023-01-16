@@ -10,16 +10,17 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="Session")
-@Data
+
 public class Session {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
-    @Column(name = "session_id")
     public int id;
 
-    public String teacher;
+  @ManyToOne
+    @JoinColumn(name="sessionTeacher")
+    public TeacherAccount teacher;
 
     public int nb_session;
     
@@ -30,7 +31,29 @@ public class Session {
     public String room;
 
     public Boolean status;
+   @ManyToOne
+    @JoinColumn(name="training_id")
+    public Training trainingSession;
 
+
+
+
+
+    public int getNb_session() {
+        return nb_session;
+    }
+
+    public void setNb_session(int nb_session) {
+        this.nb_session = nb_session;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
 
 
 
@@ -75,35 +98,34 @@ public class Session {
         this.status = status;
     }
 
+    public TeacherAccount getTeacher() {
+        return teacher;
+    }
 
-
-
-    public Session(String teacher, Date startDate, Date endDate, String room, Boolean status ) {
+    public void setTeacher(TeacherAccount teacher) {
         this.teacher = teacher;
+    }
+
+    public Training getTrainingSession() {
+        return trainingSession;
+    }
+
+    public void setTrainingSession(Training trainingSession) {
+        this.trainingSession = trainingSession;
+    }
+
+    public Session(TeacherAccount teacher, int nb_session, Date startDate, Date endDate, String room, Boolean status, Training trainingSession) {
+        this.teacher = teacher;
+        this.nb_session = nb_session;
         this.startDate = startDate;
         this.endDate = endDate;
         this.room = room;
         this.status = status;
-
+        this.trainingSession = trainingSession;
     }
 
     public Session() {
     }
-
-
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Session{" +
-                "id=" + id +
-                ", teacher='" + teacher + '\'' +
-                ", start_date=" + startDate +
-                ", end_date=" + endDate +
-                ", room=" + room +
-                ", status=" + status +
-                '}';
-    }
-
-
 }
 
 

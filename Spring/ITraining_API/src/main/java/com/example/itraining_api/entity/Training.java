@@ -11,13 +11,12 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="Training")
-@Data
+
 public class Training {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
-    @Column(name = "training_theme_id")
     public int id;
 
     public String teacher;
@@ -28,7 +27,11 @@ public class Training {
 
     public Date endDate;
 
+ @OneToMany(mappedBy = "trainingSession")
+    public List<Session> listSession;
 
+   @OneToMany(mappedBy = "trainingLearner")
+    public List<LearnerAccount> LearnerTraining;
 
     public int getId() {
         return id;
@@ -62,26 +65,56 @@ public class Training {
         this.endDate = endDate;
     }
 
+    public int getId_session() {
+        return id_session;
+    }
 
+    public void setId_session(int id_session) {
+        this.id_session = id_session;
+    }
 
-    public Training(String teacher, Date startDate, Date endDate) {
-        this.teacher = teacher;
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
-    public Training() {
+    public List<Session> getListSession() {
+        return listSession;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Training{" +
-                "id=" + id +
-                ", teacher=" + teacher +
-                ", start_date=" + startDate +
-                ", end_date=" + endDate +
+    public void setListSession(List<Session> listSession) {
+        this.listSession = listSession;
+    }
 
-                '}';
+    public List<LearnerAccount> getLearnerTraining() {
+        return LearnerTraining;
+    }
+
+    public void setLearnerTraining(List<LearnerAccount> learnerTraining) {
+        LearnerTraining = learnerTraining;
+    }
+
+    public Training(String teacher, int id_session, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> learnerTraining) {
+        this.teacher = teacher;
+        this.id_session = id_session;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.listSession = listSession;
+        LearnerTraining = learnerTraining;
+    }
+
+    public Training() {
     }
 }
 
