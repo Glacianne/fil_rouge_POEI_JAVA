@@ -1,0 +1,16 @@
+ INSERT INTO TeacherAccount (firstName, lastName, email, phone, password, subject, experience)
+  VALUES
+  ('Gael', 'Touquet', 'touquetgael@gmail.com', '+330678431345', 'Test01', 'python', 7.5);
+
+ INSERT INTO LearnerAccount (firstName, lastName, email, phone, password)
+  VALUES
+  ('Rio', 'Jeremy', 'jeremyrio@gmail.com', '+330678431346', 'lelionestmortcesoir09');
+
+
+ INSERT INTO Training (intitulé, startDate, endDate)
+ VALUES
+ ('python', DATE'0001/01/01', DATE'0002/02/02');
+
+ INSERT INTO Session (nbSession, startDate, endDate, room, status)
+ VALUES
+ (2, DATE'0001-01-01', DATE'0002-02-02', 'S001', 1);

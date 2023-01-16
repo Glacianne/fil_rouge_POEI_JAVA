@@ -18,9 +18,8 @@ public class Training {
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
     public int id;
+    public String intitulé;
 
-    public int id_session;
-    
     public Date startDate;
 
     public Date endDate;
@@ -28,8 +27,8 @@ public class Training {
     @OneToMany(mappedBy = "trainingSession")
     public List<Session> listSession;
 
-    @OneToMany(mappedBy = "trainingLearner")
-    public List<LearnerAccount> LearnerTraining;
+    @OneToMany(mappedBy = "registeredTraining")
+    public List<LearnerAccount> registeredTraining;
 
     public int getId() {
         return id;
@@ -56,14 +55,6 @@ public class Training {
         this.endDate = endDate;
     }
 
-    public int getId_session() {
-        return id_session;
-    }
-
-    public void setId_session(int id_session) {
-        this.id_session = id_session;
-    }
-
     public Date getStartDate() {
         return startDate;
     }
@@ -88,20 +79,28 @@ public class Training {
         this.listSession = listSession;
     }
 
-    public List<LearnerAccount> getLearnerTraining() {
-        return LearnerTraining;
+    public List<LearnerAccount> getRegisteredTraining() {
+        return registeredTraining;
     }
 
-    public void setLearnerTraining(List<LearnerAccount> learnerTraining) {
-        LearnerTraining = learnerTraining;
+    public void setRegisteredTraining(List<LearnerAccount> registeredTraining) {
+        registeredTraining = registeredTraining;
     }
 
-    public Training(int id_session, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> learnerTraining) {
-        this.id_session = id_session;
+    public String getIntitulé() {
+        return intitulé;
+    }
+
+    public void setIntitulé(String intitulé) {
+        this.intitulé = intitulé;
+    }
+
+    public Training(String intitulé, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> registeredTraining) {
+        this.intitulé = intitulé;
         this.startDate = startDate;
         this.endDate = endDate;
         this.listSession = listSession;
-        LearnerTraining = learnerTraining;
+        registeredTraining = registeredTraining;
     }
 
     public Training() {

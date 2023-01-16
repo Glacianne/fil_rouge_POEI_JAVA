@@ -22,7 +22,7 @@ public class Session {
     @JoinColumn(name="sessionTeacher")
     public TeacherAccount teacher;
 
-    public int nb_session;
+    public int nbSession;
     
     public Date startDate;
 
@@ -39,12 +39,12 @@ public class Session {
 
 
 
-    public int getNb_session() {
-        return nb_session;
+    public int getNbSession() {
+        return nbSession;
     }
 
-    public void setNb_session(int nb_session) {
-        this.nb_session = nb_session;
+    public void setNb_session(int nbSession) {
+        this.nbSession = nbSession;
     }
 
     public void setStartDate(Date startDate) {
@@ -116,7 +116,7 @@ public class Session {
 
     public Session(TeacherAccount teacher, int nb_session, Date startDate, Date endDate, String room, Boolean status, Training trainingSession) {
         this.teacher = teacher;
-        this.nb_session = nb_session;
+        this.nbSession = nbSession;
         this.startDate = startDate;
         this.endDate = endDate;
         this.room = room;
