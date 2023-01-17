@@ -11,17 +11,14 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class LearnerAccount extends UserAccount{
 
-
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
     public int id;
 
-
     @ManyToOne
     @JoinColumn(name="TRAINING_ID")
     public Training registeredTraining;
-
 
     public int getId() {
         return id;
