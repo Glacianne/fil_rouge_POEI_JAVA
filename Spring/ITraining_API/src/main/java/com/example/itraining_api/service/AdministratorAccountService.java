@@ -1,10 +1,8 @@
 package com.example.itraining_api.service;
 
+import java.util.List;
 
 import com.example.itraining_api.entity.AdministratorAccount;
-import com.example.itraining_api.entity.TeacherAccount;
-
-import java.util.List;
 
 public interface AdministratorAccountService {
 

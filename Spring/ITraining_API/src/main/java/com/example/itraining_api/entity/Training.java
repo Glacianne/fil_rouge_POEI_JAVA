@@ -1,21 +1,25 @@
 package com.example.itraining_api.entity;
 
-
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Training")
+@Table(name = "Training")
 
 public class Training {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     public int id;
     public String intitulé;
 
@@ -36,7 +40,6 @@ public class Training {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public Date getStart_date() {
         return startDate;
@@ -94,7 +97,8 @@ public class Training {
         this.intitulé = intitulé;
     }
 
-    public Training(String intitulé, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> registeredLearners) {
+    public Training(String intitulé, Date startDate, Date endDate, List<Session> listSession,
+            List<LearnerAccount> registeredLearners) {
         this.intitulé = intitulé;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -105,5 +109,3 @@ public class Training {
     public Training() {
     }
 }
-
-

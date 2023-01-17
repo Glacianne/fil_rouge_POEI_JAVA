@@ -1,17 +1,18 @@
 package com.example.itraining_api.service;
 
-import com.example.itraining_api.entity.LearnerAccount;
-import com.example.itraining_api.repository.LearnerAccountRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.example.itraining_api.entity.LearnerAccount;
+import com.example.itraining_api.repository.LearnerAccountRepository;
 
 @Service
-public class LearnerAccountServiceImpl implements LearnerAccountService{
+public class LearnerAccountServiceImpl implements LearnerAccountService {
     @Autowired
     private LearnerAccountRepository learnerAccountRepository;
+
     @Override
     public LearnerAccount saveLearner(LearnerAccount learnerAccount) {
         return learnerAccountRepository.save(learnerAccount);
@@ -19,7 +20,7 @@ public class LearnerAccountServiceImpl implements LearnerAccountService{
 
     @Override
     public List<LearnerAccount> findLearnerAccountList() {
-        return (List<LearnerAccount>)  learnerAccountRepository.findAll();
+        return (List<LearnerAccount>) learnerAccountRepository.findAll();
     }
 
     @Override
@@ -39,4 +40,3 @@ public class LearnerAccountServiceImpl implements LearnerAccountService{
         return null;
     }
 }
-

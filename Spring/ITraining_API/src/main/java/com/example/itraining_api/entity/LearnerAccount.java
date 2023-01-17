@@ -1,25 +1,32 @@
 package com.example.itraining_api.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
-@Table(name="LearnerAccount")
+@Table(name = "LearnerAccount")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class LearnerAccount extends UserAccount{
+public class LearnerAccount extends UserAccount {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     public int id;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="TRAINING_ID")
+    @JoinColumn(name = "TRAINING_ID")
     public Training registeredTraining;
 
     public int getId() {
@@ -38,7 +45,8 @@ public class LearnerAccount extends UserAccount{
         this.registeredTraining = registeredTraining;
     }
 
-    public LearnerAccount(String firstName, String lastName, String email, String phone, String password, Training trainingLearner) {
+    public LearnerAccount(String firstName, String lastName, String email, String phone, String password,
+            Training trainingLearner) {
         super(firstName, lastName, email, phone, password);
         this.registeredTraining = trainingLearner;
     }
