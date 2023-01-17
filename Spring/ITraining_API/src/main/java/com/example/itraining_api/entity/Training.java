@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 
@@ -28,7 +27,7 @@ public class Training {
     public List<Session> listSession;
 
     @OneToMany(mappedBy = "registeredTraining")
-    public List<LearnerAccount> registeredTraining;
+    public List<LearnerAccount> registeredLearners;
 
     public int getId() {
         return id;
@@ -79,12 +78,12 @@ public class Training {
         this.listSession = listSession;
     }
 
-    public List<LearnerAccount> getRegisteredTraining() {
-        return registeredTraining;
+    public List<LearnerAccount> getRegisteredLearners() {
+        return registeredLearners;
     }
 
-    public void setRegisteredTraining(List<LearnerAccount> registeredTraining) {
-        registeredTraining = registeredTraining;
+    public void setRegisteredLearners(List<LearnerAccount> registeredLearners) {
+        registeredLearners = registeredLearners;
     }
 
     public String getIntitulé() {
@@ -95,12 +94,12 @@ public class Training {
         this.intitulé = intitulé;
     }
 
-    public Training(String intitulé, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> registeredTraining) {
+    public Training(String intitulé, Date startDate, Date endDate, List<Session> listSession, List<LearnerAccount> registeredLearners) {
         this.intitulé = intitulé;
         this.startDate = startDate;
         this.endDate = endDate;
         this.listSession = listSession;
-        registeredTraining = registeredTraining;
+        registeredLearners = registeredLearners;
     }
 
     public Training() {
