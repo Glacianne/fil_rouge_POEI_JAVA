@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TeacherAccountRepository extends CrudRepository<TeacherAccount, Long> {
+public interface TeacherAccountRepository extends CrudRepository<TeacherAccount, Integer> {
 
 
 
 
-    List<TeacherAccount> findTeacherById(int id);
+
 }

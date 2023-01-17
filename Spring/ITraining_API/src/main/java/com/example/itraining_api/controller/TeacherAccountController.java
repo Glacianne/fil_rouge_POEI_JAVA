@@ -2,12 +2,11 @@ package com.example.itraining_api.controller;
 
 import com.example.itraining_api.entity.TeacherAccount;
 import com.example.itraining_api.repository.TeacherAccountRepository;
+import com.example.itraining_api.service.TeacherAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -16,16 +15,26 @@ import java.util.Map;
 public class TeacherAccountController {
 
     @Autowired
-    private TeacherAccountRepository teacherAccountRepository;
-    @GetMapping("/teacherAccount")
-    public List<TeacherAccount> getTeacherAccount(@RequestParam int id) {
-        List<TeacherAccount> teacherAccounts = teacherAccountRepository.findTeacherById(id);
-        if (teacherAccounts != null) {
-            return teacherAccounts;
-        } else {
-            return null;
-        }
+    private TeacherAccountService teacherAccountService;
+
+   @PostMapping("/teacher")
+    public TeacherAccount saveTeacher(@RequestBody TeacherAccount teacherAccount)
+    {
+        return teacherAccountService.saveTeacher(teacherAccount);
+    }
+
+    @PutMapping("/teacher/{id}")
+    public TeacherAccount updateTeacher(@RequestBody TeacherAccount teacherAccount, @PathVariable("id") int id){
+        return teacherAccountService.updateTeacher(teacherAccount, id);
+    }
+
+    @DeleteMapping("/teacher/{id}")
+    public String deleteTeacher(@RequestBody TeacherAccount teacherAccount, @PathVariable("id") int id){
+         teacherAccountService.deleteTeacherById(id);
+        return "Suppression réussie";
+    }
+
     }
 
 
-}
+
