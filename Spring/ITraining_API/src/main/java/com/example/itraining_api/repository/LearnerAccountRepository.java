@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.example.itraining_api.entity.LearnerAccount;
 
-public interface LearnerAccountRepository extends CrudRepository<LearnerAccount, Long> {
+public interface LearnerAccountRepository extends CrudRepository<LearnerAccount, Integer> {
 
 }
