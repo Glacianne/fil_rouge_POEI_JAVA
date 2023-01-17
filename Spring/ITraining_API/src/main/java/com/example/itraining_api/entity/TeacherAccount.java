@@ -1,10 +1,8 @@
 package com.example.itraining_api.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -24,13 +22,7 @@ public class TeacherAccount extends UserAccount {
     public List<Session> TeacherSession;
 
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public TeacherAccount(String firstName, String lastName, String email, String phone, String password, String subject, Double experience, List<Session> teacherSession) {
         super(firstName, lastName, email, phone, password);
