@@ -3,10 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HomeComponent} from "./home/home.component";
+import {NavbarComponent} from "./navbar/navbar.component";
+import {FooterComponent} from "./footer/footer.component";
+import {CopyrightComponent} from "./copyright/copyright.component";
+import {AccountComponent} from "./account/account.component";
+import {TeacherAccountComponent} from "./account/teacher-account/teacher-account.component";
+import {LearnerAccountComponent} from "./account/learner-account/learner-account.component";
+import {AdministratorAccountComponent} from "./account/administrator-account/administrator-account.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    NavbarComponent,
+    FooterComponent,
+    CopyrightComponent,
+    AccountComponent,
+    TeacherAccountComponent,
+    LearnerAccountComponent,
+    AdministratorAccountComponent
   ],
   imports: [
     BrowserModule,
