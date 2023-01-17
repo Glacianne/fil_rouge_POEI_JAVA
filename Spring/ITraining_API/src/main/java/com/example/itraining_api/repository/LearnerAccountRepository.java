@@ -6,6 +6,5 @@ import com.example.itraining_api.entity.LearnerAccount;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LearnerAccountRepository extends CrudRepository<LearnerAccount, Long> {
-
+public interface LearnerAccountRepository extends CrudRepository<LearnerAccount, Integer> {
 }
