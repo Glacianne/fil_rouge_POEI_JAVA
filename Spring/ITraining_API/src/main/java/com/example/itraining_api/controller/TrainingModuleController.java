@@ -3,118 +3,107 @@ package com.example.itraining_api.controller;
 import com.example.itraining_api.entity.LearnerAccount;
 import com.example.itraining_api.entity.Training;
 import com.example.itraining_api.repository.LearnerAccountRepository;
-import com.example.itraining_api.repository.TrainingModuleRepository;
+import com.example.itraining_api.service.TrainingModuleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
 public class TrainingModuleController {
 
     @Autowired
-    private TrainingModuleRepository trainingModuleRepository;
-
-    @Autowired
     private LearnerAccountRepository learnerAccountRepository;
 
-    @PostMapping("/createTrainingModule")
-    public ResponseEntity<String> createTrainingModule(@RequestBody Training training){
-        Training savedTrainingModule = null;
-        ResponseEntity<String> response = null;
+    @Autowired
+    private TrainingModuleService trainingModuleService;
+
+    @PostMapping("/trainingModule")
+    public ResponseEntity<Map<String, Training>> createTrainingModule(@RequestBody Training training){
+        Map<String, Training> hashMap = new HashMap<String, Training>();
         try{
-            savedTrainingModule = trainingModuleRepository.save(training);
-            if(savedTrainingModule.getId() > 0){
-                response = ResponseEntity.status(HttpStatus.CREATED).body("Training module has succefully been created");
-            }
+            hashMap.put("Formation créée",trainingModuleService.saveTrainingModule(training));
         } catch (Exception e) {
-            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An exception has occured due to " + e.getMessage());
+            hashMap.put("Erreur à cause de " + e.getMessage(), null);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(hashMap);
         }
-        return response;
+        return ResponseEntity.ok(hashMap);
     }
 
-    @DeleteMapping("/deleteTrainingModule/{id}")
+    @DeleteMapping("/trainingModule/{id}")
     public ResponseEntity<String> deleteTrainingModule(@PathVariable int id){
         try{
-            Training training = trainingModuleRepository.findById(id).orElse(null);
-            trainingModuleRepository.delete(training);
+            trainingModuleService.deleteTrainingModuleById(id);
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An exception has occured due to " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An exception has occured due to " + e.getMessage());
         }
-
         return ResponseEntity.ok("Formation supprimée");
 
     }
 
     @PutMapping("/trainingModule/{id}")
-    public ResponseEntity<String> updateTrainingModule(@PathVariable int id, @RequestBody Training trainingDetails){
+    public ResponseEntity<Map<String, Training>> updateTrainingModule(@PathVariable("id") int id, @RequestBody Training trainingDetails){
+        Map<String, Training> hashMap = new HashMap<String, Training>();
         try{
-            Training training = trainingModuleRepository.findById(id).orElse(null);
-           training.setIntitulé(trainingDetails.getIntitulé());
-           training.setStartDate(trainingDetails.getStartDate());
-           training.setEndDate(trainingDetails.getEndDate());
-           training.setListSession(trainingDetails.getListSession());
-           training.setRegisteredLearners(trainingDetails.getRegisteredLearners());
-           trainingModuleRepository.save(training);
+             hashMap.put("Formation modifiée",trainingModuleService.updateTrainingModule(trainingDetails, id));
         } catch (Exception e) {
+            hashMap.put("Erreur à cause de " + e.getMessage(), null);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An exception has occured due to " + e.getMessage());
+                    .body(hashMap);
         }
-        return ResponseEntity.ok("Formation mise à jour");
+        return ResponseEntity.ok(hashMap);
     }
 
     @GetMapping("/trainingModuleCatalog")
-    public ResponseEntity<ArrayList<Training>> findAllTrainingModule(){
-        ArrayList<Training> response = new ArrayList<Training>();
+    public ResponseEntity<Map<String, List<Training>>> findAllTrainingModule(){
+        Map<String, List<Training>> hashMap = new HashMap<String, List<Training>>();
         try{
-           response = (ArrayList<Training>) trainingModuleRepository.findAll();
+           hashMap.put ("Catalogue chargé", trainingModuleService.findTrainingModuleList());
         } catch (Exception e) {
-           return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(response);
+            hashMap.put("Erreur à cause de " + e.getMessage(), null);
+           return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(hashMap);
         }
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(hashMap);
     }
 
     @GetMapping("/trainingModule/{id}")
-    public ResponseEntity<Training> findTrainingModuleById(@PathVariable int id){
-        Training response = null;
+    public ResponseEntity<Map<String, Training>> findTrainingModuleById(@PathVariable int id){
+        Map<String, Training> hashMap = new HashMap<String, Training>();
         try{
-        response = trainingModuleRepository.findById(id).orElse(null);
-    } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(response);
-    }
-        return ResponseEntity.ok(response);
+            hashMap.put("Formation trouvée", trainingModuleService.findTrainingModuleById(id));
+        } catch (Exception e) {
+            hashMap.put("Erreur à cause de " + e.getMessage(), null);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(hashMap);
+        }
+        return ResponseEntity.ok(hashMap);
 }
 
     @PostMapping("/addLearner")
-    public ResponseEntity<String> addLearner(@RequestParam int trainingId, @RequestParam int learnerId){
-        ResponseEntity<String> response = null;
+    public ResponseEntity<Map<String, LearnerAccount>> addLearner(@RequestParam int trainingId, @RequestParam int learnerId){
+        Map<String, LearnerAccount> hashMap = new HashMap<String, LearnerAccount>();
         try {
-            Training training = trainingModuleRepository.findById(trainingId).orElse(null);
+            Training training = trainingModuleService.findTrainingModuleById(trainingId);
             LearnerAccount learnerAccount = learnerAccountRepository.findById(learnerId).orElse(null);
             if (training == null) {
-                throw new IllegalArgumentException("Training ID not found");
+                hashMap.put("La formation n'a pas été trouvée", null);
             }
             if (learnerAccount == null) {
-                throw new IllegalArgumentException("Learner ID not found");
+                hashMap.put("L'apprenant n'a pas été trouvé", null);
             }
             learnerAccount.setRegisteredTraining(training);
-            learnerAccountRepository.save(learnerAccount);
-            response = ResponseEntity.status(HttpStatus.OK).body("Learner added to training");
+            hashMap.put("Formation attribuée à l'apprenant", learnerAccountRepository.save(learnerAccount));
         }catch (Exception e) {
-            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An exception has occured due to " + e.getMessage());
+            hashMap.put("Erreur à cause de " + e.getMessage(), null);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(hashMap);
         }
-        return response;
+        return ResponseEntity.ok(hashMap);
     }
 }
