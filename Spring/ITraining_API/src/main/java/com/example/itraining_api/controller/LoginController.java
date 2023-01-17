@@ -39,7 +39,7 @@ public class LoginController {
     //     return response;
     // }
 
-    @PostMapping("/createLearnerAccount")
+  /*  @PostMapping("/createLearnerAccount")
     public ResponseEntity<String> createLearnerAccount(@RequestBody LearnerAccount learnerAccount) {
         UserAccount savedUser = null;
         ResponseEntity<String> response = null;
@@ -55,7 +55,7 @@ public class LoginController {
                     .body("An exception has occured due to " + e.getMessage());
         }
         return response;
-    }
+    }*/
 
     // @PostMapping("/login")
     // public ResponseEntity<String> loginUser(@RequestParam String email,

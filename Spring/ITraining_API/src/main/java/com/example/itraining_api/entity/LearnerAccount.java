@@ -1,5 +1,6 @@
 package com.example.itraining_api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -16,6 +17,7 @@ public class LearnerAccount extends UserAccount{
     @GenericGenerator(name = "native",strategy = "native")
     public int id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="TRAINING_ID")
     public Training registeredTraining;

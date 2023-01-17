@@ -23,8 +23,8 @@ public class LearnerAccountServiceImpl implements LearnerAccountService{
     }
 
     @Override
-    public Optional<LearnerAccount> findById(int id) {
-        return learnerAccountRepository.findById(id);
+    public LearnerAccount findLearnerById(int id) {
+        return learnerAccountRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -34,8 +34,9 @@ public class LearnerAccountServiceImpl implements LearnerAccountService{
     }
 
     @Override
-    public void deleteLearnerById(int id) {
+    public LearnerAccount deleteLearnerById(int id) {
         learnerAccountRepository.deleteById(id);
+        return null;
     }
 }
 

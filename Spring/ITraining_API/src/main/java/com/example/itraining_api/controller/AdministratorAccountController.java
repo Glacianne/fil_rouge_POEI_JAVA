@@ -43,7 +43,7 @@ public class AdministratorAccountController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @PostMapping("/ajouterAdministrateur")
+    @PostMapping("/addAdministrator")
     public ResponseEntity<Map<String, AdministratorAccount>> saveAdministrator(@RequestBody AdministratorAccount administratorAccount){
     Map<String, AdministratorAccount> hashMap = new HashMap<String, AdministratorAccount>();
     try{
