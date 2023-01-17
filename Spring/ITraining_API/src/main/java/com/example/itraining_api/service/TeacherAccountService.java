@@ -1,6 +1,6 @@
 package com.example.itraining_api.service;
 
-import com.example.itraining_api.entity.LearnerAccount;
+
 import com.example.itraining_api.entity.TeacherAccount;
 
 import java.util.List;
@@ -18,4 +18,5 @@ public interface TeacherAccountService {
 
 
     TeacherAccount findTeacherById(int id);
+
 }

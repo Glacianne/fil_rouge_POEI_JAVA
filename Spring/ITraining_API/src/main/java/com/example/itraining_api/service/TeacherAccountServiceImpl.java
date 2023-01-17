@@ -2,6 +2,7 @@ package com.example.itraining_api.service;
 
 import com.example.itraining_api.entity.LearnerAccount;
 import com.example.itraining_api.entity.TeacherAccount;
+import com.example.itraining_api.repository.LearnerAccountRepository;
 import com.example.itraining_api.repository.TeacherAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,10 @@ import java.util.Optional;
 public class TeacherAccountServiceImpl implements TeacherAccountService{
     @Autowired
     private TeacherAccountRepository teacherAccountRepository;
+
+    @Autowired
+    private LearnerAccountRepository learnerAccountRepository;
+
     @Override
     public TeacherAccount saveTeacher(TeacherAccount teacherAccount) {
         return teacherAccountRepository.save(teacherAccount);
@@ -39,6 +44,8 @@ public class TeacherAccountServiceImpl implements TeacherAccountService{
     public TeacherAccount findTeacherById(int id) {
         return teacherAccountRepository.findById(id).orElse(null);
     }
+
+
 
 
 }
