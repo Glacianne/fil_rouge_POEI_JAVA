@@ -11,6 +11,7 @@ import {AccountComponent} from "./account/account.component";
 import {TeacherAccountComponent} from "./account/teacher-account/teacher-account.component";
 import {LearnerAccountComponent} from "./account/learner-account/learner-account.component";
 import {AdministratorAccountComponent} from "./account/administrator-account/administrator-account.component";
+import {InscriptionComponent} from "./inscription/inscription.component";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {AdministratorAccountComponent} from "./account/administrator-account/adm
     AccountComponent,
     TeacherAccountComponent,
     LearnerAccountComponent,
-    AdministratorAccountComponent
+    AdministratorAccountComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
