@@ -1,16 +1,15 @@
 package com.example.itraining_api.service;
 
-import com.example.itraining_api.entity.TeacherAccount;
-import com.example.itraining_api.entity.Training;
-import com.example.itraining_api.repository.TeacherAccountRepository;
-import com.example.itraining_api.repository.TrainingModuleRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.example.itraining_api.entity.Training;
+import com.example.itraining_api.repository.TrainingModuleRepository;
 
 @Service
-public class TrainingModuleServiceImpl implements TrainingModuleService{
+public class TrainingModuleServiceImpl implements TrainingModuleService {
 
     @Autowired
     private TrainingModuleRepository trainingModuleRepository;
@@ -22,11 +21,11 @@ public class TrainingModuleServiceImpl implements TrainingModuleService{
 
     @Override
     public List<Training> findTrainingModuleList() {
-        return (List<Training>)  trainingModuleRepository.findAll();
+        return (List<Training>) trainingModuleRepository.findAll();
     }
 
     @Override
-    public Training findTrainingModuleById(int id){
+    public Training findTrainingModuleById(int id) {
         return trainingModuleRepository.findById(id).orElse(null);
     }
 

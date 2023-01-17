@@ -1,9 +1,8 @@
 package com.example.itraining_api.service;
 
-import com.example.itraining_api.entity.AdministratorAccount;
-import com.example.itraining_api.entity.LearnerAccount;
 import java.util.List;
-import java.util.Optional;
+
+import com.example.itraining_api.entity.LearnerAccount;
 
 public interface LearnerAccountService {
     LearnerAccount saveLearner(LearnerAccount learnerAccount);
@@ -16,4 +15,3 @@ public interface LearnerAccountService {
 
     LearnerAccount deleteLearnerById(int id);
 }
-

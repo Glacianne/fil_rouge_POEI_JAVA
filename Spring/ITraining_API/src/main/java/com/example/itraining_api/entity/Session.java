@@ -1,31 +1,36 @@
 package com.example.itraining_api.entity;
 
-
 import java.util.Date;
-import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 @Entity
-@Table(name="Session")
+@Table(name = "Session")
 
 public class Session {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     public int id;
 
     @JsonIgnore
-  @ManyToOne
-    @JoinColumn(name="sessionTeacher")
+    @ManyToOne
+    @JoinColumn(name = "sessionTeacher")
     public TeacherAccount teacher;
 
     public int nbSession;
-    
+
     public Date startDate;
 
     public Date endDate;
@@ -34,13 +39,9 @@ public class Session {
 
     public Boolean status;
     @JsonIgnore
-   @ManyToOne
-    @JoinColumn(name="training_id")
+    @ManyToOne
+    @JoinColumn(name = "training_id")
     public Training trainingSession;
-
-
-
-
 
     public int getNbSession() {
         return nbSession;
@@ -58,8 +59,6 @@ public class Session {
         this.status = status;
     }
 
-
-
     public int getId() {
         return id;
     }
@@ -67,7 +66,6 @@ public class Session {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public Date getStartDate() {
         return startDate;
@@ -117,7 +115,8 @@ public class Session {
         this.trainingSession = trainingSession;
     }
 
-    public Session(TeacherAccount teacher, int nb_session, Date startDate, Date endDate, String room, Boolean status, Training trainingSession) {
+    public Session(TeacherAccount teacher, int nb_session, Date startDate, Date endDate, String room, Boolean status,
+            Training trainingSession) {
         this.teacher = teacher;
         this.nbSession = nbSession;
         this.startDate = startDate;
@@ -130,5 +129,3 @@ public class Session {
     public Session() {
     }
 }
-
-

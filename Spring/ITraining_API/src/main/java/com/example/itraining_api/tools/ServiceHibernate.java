@@ -1,10 +1,8 @@
 package com.example.itraining_api.tools;
 
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.stereotype.Service;
-import org.hibernate.cfg.Configuration;
 
 @Service
 public class ServiceHibernate {
@@ -13,10 +11,12 @@ public class ServiceHibernate {
     public ServiceHibernate() {
         try {
             _session = HibernateUtil.getSessionFactory().openSession();
-        }catch (HibernateException e) {
+        } catch (HibernateException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public Session getSession() {return HibernateUtil.getSessionFactory().openSession();}
+    public Session getSession() {
+        return this._session;
+    }
 }
