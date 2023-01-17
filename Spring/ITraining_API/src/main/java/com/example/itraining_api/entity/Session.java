@@ -4,6 +4,7 @@ package com.example.itraining_api.entity;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
@@ -18,6 +19,7 @@ public class Session {
     @GenericGenerator(name = "native",strategy = "native")
     public int id;
 
+    @JsonIgnore
   @ManyToOne
     @JoinColumn(name="sessionTeacher")
     public TeacherAccount teacher;
@@ -31,6 +33,7 @@ public class Session {
     public String room;
 
     public Boolean status;
+    @JsonIgnore
    @ManyToOne
     @JoinColumn(name="training_id")
     public Training trainingSession;

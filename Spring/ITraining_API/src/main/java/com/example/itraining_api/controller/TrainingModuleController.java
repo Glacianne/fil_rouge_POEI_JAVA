@@ -49,7 +49,7 @@ public class TrainingModuleController {
 
     }
 
-    @PutMapping("/trainingModule/{id}")
+    @PutMapping("/trainingModuleUpdate/{id}")
     public ResponseEntity<Map<String, Training>> updateTrainingModule(@PathVariable("id") int id, @RequestBody Training trainingDetails){
         Map<String, Training> hashMap = new HashMap<String, Training>();
         try{
@@ -86,24 +86,5 @@ public class TrainingModuleController {
         return ResponseEntity.ok(hashMap);
 }
 
-    @PostMapping("/addLearner")
-    public ResponseEntity<Map<String, LearnerAccount>> addLearner(@RequestParam int trainingId, @RequestParam int learnerId){
-        Map<String, LearnerAccount> hashMap = new HashMap<String, LearnerAccount>();
-        try {
-            Training training = trainingModuleService.findTrainingModuleById(trainingId);
-            LearnerAccount learnerAccount = learnerAccountRepository.findById(learnerId).orElse(null);
-            if (training == null) {
-                hashMap.put("La formation n'a pas été trouvée", null);
-            }
-            if (learnerAccount == null) {
-                hashMap.put("L'apprenant n'a pas été trouvé", null);
-            }
-            learnerAccount.setRegisteredTraining(training);
-            hashMap.put("Formation attribuée à l'apprenant", learnerAccountRepository.save(learnerAccount));
-        }catch (Exception e) {
-            hashMap.put("Erreur à cause de " + e.getMessage(), null);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(hashMap);
-        }
-        return ResponseEntity.ok(hashMap);
-    }
+
 }
