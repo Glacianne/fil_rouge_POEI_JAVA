@@ -68,7 +68,7 @@ public class AdministratorAccountController {
         }
         return ResponseEntity.ok(hashMap);
     }
-
+//ça fonctionne
 
     @DeleteMapping("/suppressAdministrator/{id}")
     public ResponseEntity<String> deleteTrainingModule(@PathVariable int id){
