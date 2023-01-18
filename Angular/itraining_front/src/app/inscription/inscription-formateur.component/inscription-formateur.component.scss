@@ -8,7 +8,8 @@ a{
   color: black;
   text-decoration: none;
   &:hover{
-    color: #D9D9D9;
+    text-decoration: underline;
+    cursor: pointer;
   }
   &:active{
     color: black;
