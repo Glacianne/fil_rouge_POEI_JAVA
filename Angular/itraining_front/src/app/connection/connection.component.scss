@@ -8,6 +8,18 @@ h1 {
   color: #204B9B;
 }
 
+a{
+  color: black;
+  text-decoration: none;
+  &:hover{
+    color: #B93017;
+    cursor: pointer;
+  }
+  &:active{
+    color: black;
+  }
+}
+
 .content{
   display: flex;
   flex-direction: column;
@@ -37,14 +49,6 @@ form{
     font-weight: 700;
   }
 
-  .radio-form{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
-
   button{
     width: 150px;
     height: 50px;
@@ -54,19 +58,16 @@ form{
     border: #B93017;
     background-color: #B93017;
     border-radius: 4px;
-    &:hover {
-      opacity: 80%;
-      cursor: pointer;
-    }
+  }
+
+  button:hover{
+    opacity: 80%;
+    cursor: pointer;
   }
 
   .center{
     display: flex;
     justify-content: center;
     margin-top: 30px;
-  }
-
-  .margin-left{
-    margin-left: 10px;
   }
 }
