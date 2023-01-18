@@ -17,20 +17,21 @@ import {ReseauxComponent} from "./training-field/reseaux/reseaux.component";
 import {GestionProjetComponent} from "./training-field/gestion-projet/gestion-projet.component";
 import {SystemesExploitationComponent} from "./training-field/systemes-exploitation/systemes-exploitation.component";
 import {JavaComponent} from "./training-field/programming-langages/java/java.component";
+import {ProfileComponent} from "./account/profile/profile.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'inscription-formateur', component: InscriptionFormateurComponent},
   {path: 'connection', component: ConnectionComponent},
-  {
-    path: 'account', component: AccountComponent,
+  {path: 'account', component: AccountComponent,
     children: [
       {path: 'administrator', component: AdministratorAccountComponent},
       {path: 'teacher', component: TeacherAccountComponent},
       {path: 'learner', component: LearnerAccountComponent}
     ]
   },
+  {path: 'profil', component: ProfileComponent},
   {path: 'formations-catalogue', component: TrainingFieldComponent},
   {path: 'langages-programmation', component: ProgrammingLangagesComponent},
   {path: 'formation-java', component: JavaComponent},

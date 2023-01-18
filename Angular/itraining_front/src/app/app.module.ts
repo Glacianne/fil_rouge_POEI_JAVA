@@ -24,6 +24,7 @@ import { GestionProjetComponent } from './training-field/gestion-projet/gestion-
 import { SystemesExploitationComponent } from './training-field/systemes-exploitation/systemes-exploitation.component';
 import { JavaComponent } from './training-field/programming-langages/java/java.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './account/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReseauxComponent,
     GestionProjetComponent,
     SystemesExploitationComponent,
-    JavaComponent
+    JavaComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
