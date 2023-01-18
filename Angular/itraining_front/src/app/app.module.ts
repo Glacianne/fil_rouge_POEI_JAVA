@@ -23,6 +23,7 @@ import { ReseauxComponent } from './training-field/reseaux/reseaux.component';
 import { GestionProjetComponent } from './training-field/gestion-projet/gestion-projet.component';
 import { SystemesExploitationComponent } from './training-field/systemes-exploitation/systemes-exploitation.component';
 import { JavaComponent } from './training-field/programming-langages/java/java.component';
+import { ProfileComponent } from './account/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { JavaComponent } from './training-field/programming-langages/java/java.c
     ReseauxComponent,
     GestionProjetComponent,
     SystemesExploitationComponent,
-    JavaComponent
+    JavaComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
