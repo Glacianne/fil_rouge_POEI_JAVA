@@ -13,22 +13,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.itraining_api.entity.Training;
+import com.example.itraining_api.entity.TrainingModule;
 import com.example.itraining_api.service.TrainingModuleService;
 
 @RestController
+@RequestMapping("/trainingModuleController")
 public class TrainingModuleController {
 
     @Autowired
     private TrainingModuleService trainingModuleService;
 
     @PostMapping("/trainingModule")
-    public ResponseEntity<Map<String, Training>> createTrainingModule(@RequestBody Training training) {
-        Map<String, Training> hashMap = new HashMap<String, Training>();
+    public ResponseEntity<Map<String, TrainingModule>> createTrainingModule(@RequestBody TrainingModule trainingModule) {
+        Map<String, TrainingModule> hashMap = new HashMap<String, TrainingModule>();
         try {
-            hashMap.put("Formation créée", trainingModuleService.saveTrainingModule(training));
+            hashMap.put("Formation créée", trainingModuleService.saveTrainingModule(trainingModule));
         } catch (Exception e) {
             hashMap.put("Erreur à cause de " + e.getMessage(), null);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -52,10 +54,10 @@ public class TrainingModuleController {
 
     }
 
-    @PutMapping("/trainingModuleUpdate/{id}")
-    public ResponseEntity<Map<String, Training>> updateTrainingModule(@PathVariable("id") int id,
-            @RequestBody Training trainingDetails) {
-        Map<String, Training> hashMap = new HashMap<String, Training>();
+    @PutMapping("/trainingModule/{id}")
+    public ResponseEntity<Map<String, TrainingModule>> updateTrainingModule(@PathVariable("id") int id,
+            @RequestBody TrainingModule trainingDetails) {
+        Map<String, TrainingModule> hashMap = new HashMap<String, TrainingModule>();
         try {
             hashMap.put("Formation modifiée", trainingModuleService.updateTrainingModule(trainingDetails, id));
         } catch (Exception e) {
@@ -66,9 +68,9 @@ public class TrainingModuleController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @GetMapping("/trainingModuleCatalog")
-    public ResponseEntity<Map<String, List<Training>>> findAllTrainingModule() {
-        Map<String, List<Training>> hashMap = new HashMap<String, List<Training>>();
+    @GetMapping("/trainingModule")
+    public ResponseEntity<Map<String, List<TrainingModule>>> findAllTrainingModule() {
+        Map<String, List<TrainingModule>> hashMap = new HashMap<String, List<TrainingModule>>();
         try {
             hashMap.put("Catalogue chargé", trainingModuleService.findTrainingModuleList());
         } catch (Exception e) {
@@ -79,8 +81,8 @@ public class TrainingModuleController {
     }
 
     @GetMapping("/trainingModule/{id}")
-    public ResponseEntity<Map<String, Training>> findTrainingModuleById(@PathVariable int id) {
-        Map<String, Training> hashMap = new HashMap<String, Training>();
+    public ResponseEntity<Map<String, TrainingModule>> findTrainingModuleById(@PathVariable int id) {
+        Map<String, TrainingModule> hashMap = new HashMap<String, TrainingModule>();
         try {
             hashMap.put("Formation trouvée", trainingModuleService.findTrainingModuleById(id));
         } catch (Exception e) {

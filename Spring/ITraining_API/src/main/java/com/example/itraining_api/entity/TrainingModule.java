@@ -9,13 +9,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Training")
-
-public class Training {
+@Table(name = "TrainingModule")
+public class TrainingModule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -27,11 +27,11 @@ public class Training {
 
     public Date endDate;
 
-    @OneToMany(mappedBy = "trainingSession")
-    public List<Session> listSession;
+    @OneToMany(mappedBy = "affiliatedTrainingModule")
+    public List<Session> sessionList;
 
-    @OneToMany(mappedBy = "registeredTraining")
-    public List<LearnerAccount> registeredLearners;
+    @ManyToMany(mappedBy = "registeredTrainingList")
+    public List<LearnerAccount> registeredLearnerList;
 
     public int getId() {
         return id;
@@ -73,20 +73,20 @@ public class Training {
         this.endDate = endDate;
     }
 
-    public List<Session> getListSession() {
-        return listSession;
+    public List<Session> getSessionList() {
+        return sessionList;
     }
 
-    public void setListSession(List<Session> listSession) {
-        this.listSession = listSession;
+    public void setSessionList(List<Session> listSession) {
+        this.sessionList = listSession;
     }
 
-    public List<LearnerAccount> getRegisteredLearners() {
-        return registeredLearners;
+    public List<LearnerAccount> getRegisteredLearnerList() {
+        return registeredLearnerList;
     }
 
-    public void setRegisteredLearners(List<LearnerAccount> registeredLearners) {
-        registeredLearners = registeredLearners;
+    public void setRegisteredLearnerList(List<LearnerAccount> registeredLearnerList) {
+        this.registeredLearnerList = registeredLearnerList;
     }
 
     public String getIntitulé() {
@@ -97,15 +97,15 @@ public class Training {
         this.intitulé = intitulé;
     }
 
-    public Training(String intitulé, Date startDate, Date endDate, List<Session> listSession,
-            List<LearnerAccount> registeredLearners) {
+    public TrainingModule(String intitulé, Date startDate, Date endDate, List<Session> listSession,
+            List<LearnerAccount> registeredLearnerList) {
         this.intitulé = intitulé;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.listSession = listSession;
-        registeredLearners = registeredLearners;
+        this.sessionList = listSession;
+        this.registeredLearnerList = registeredLearnerList;
     }
 
-    public Training() {
+    public TrainingModule() {
     }
 }

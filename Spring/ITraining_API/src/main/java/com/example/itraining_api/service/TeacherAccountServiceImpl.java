@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.itraining_api.entity.TeacherAccount;
-import com.example.itraining_api.repository.LearnerAccountRepository;
 import com.example.itraining_api.repository.TeacherAccountRepository;
 
 @Service

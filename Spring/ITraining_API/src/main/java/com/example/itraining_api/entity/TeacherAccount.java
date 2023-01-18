@@ -27,14 +27,14 @@ public class TeacherAccount extends UserAccount {
     public Double experience;
 
     @OneToMany(mappedBy = "teacher")
-    public List<Session> TeacherSession;
+    public List<Session> sessionList;
 
     public TeacherAccount(String firstName, String lastName, String email, String phone, String password,
             String subject, Double experience, List<Session> teacherSession) {
         super(firstName, lastName, email, phone, password);
         this.subject = subject;
         this.experience = experience;
-        TeacherSession = teacherSession;
+        sessionList = teacherSession;
     }
 
     public TeacherAccount() {

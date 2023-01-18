@@ -13,23 +13,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.itraining_api.entity.TeacherAccount;
 import com.example.itraining_api.service.TeacherAccountService;
 
 @RestController
+@RequestMapping("/teacherController")
 public class TeacherAccountController {
 
     @Autowired
     private TeacherAccountService teacherAccountService;
 
-    @PutMapping("/teacher")
-    public List<TeacherAccount> findTeacherAccountList() {
+    @GetMapping("/teacher")
+    public List<TeacherAccount> findAllTeacher() {
         return teacherAccountService.findTeacherAccountList();
     }
 
-    @GetMapping("/teacherAccount/{id}")
+    @GetMapping("/teacher/{id}")
     public ResponseEntity<Map<String, TeacherAccount>> findTeacherById(@PathVariable int id) {
         Map<String, TeacherAccount> hashMap = new HashMap<String, TeacherAccount>();
         try {
@@ -41,8 +43,8 @@ public class TeacherAccountController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @PostMapping("/ajouterTeacher")
-    public ResponseEntity<Map<String, TeacherAccount>> saveTeacher(@RequestBody TeacherAccount teacherAccount) {
+    @PostMapping("/teacher")
+    public ResponseEntity<Map<String, TeacherAccount>> createTeacher(@RequestBody TeacherAccount teacherAccount) {
         Map<String, TeacherAccount> hashMap = new HashMap<String, TeacherAccount>();
         try {
             hashMap.put("Prof ajouté", teacherAccountService.saveTeacher(teacherAccount));
@@ -54,8 +56,8 @@ public class TeacherAccountController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @PutMapping("/updateTeacher/{id}")
-    public ResponseEntity<Map<String, TeacherAccount>> updateTrainingModule(@PathVariable("id") int id,
+    @PutMapping("/teacher/{id}")
+    public ResponseEntity<Map<String, TeacherAccount>> updateTeacher(@PathVariable("id") int id,
             @RequestBody TeacherAccount teacherAccount) {
         Map<String, TeacherAccount> hashMap = new HashMap<String, TeacherAccount>();
         try {
@@ -68,7 +70,7 @@ public class TeacherAccountController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @DeleteMapping("/suppressTeacher/{id}")
+    @DeleteMapping("/teacher/{id}")
     public ResponseEntity<String> deleteTeacher(@PathVariable("id") int id) {
         Map<String, TeacherAccount> hashMap = new HashMap<String, TeacherAccount>();
         try {

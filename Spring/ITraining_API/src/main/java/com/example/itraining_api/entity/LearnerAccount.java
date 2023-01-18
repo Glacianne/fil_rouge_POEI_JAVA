@@ -1,5 +1,7 @@
 package com.example.itraining_api.entity;
 
+import java.util.List;
+
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -11,7 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,9 +27,9 @@ public class LearnerAccount extends UserAccount {
     public int id;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "TRAINING_ID")
-    public Training registeredTraining;
+    public List<TrainingModule> registeredTrainingList;
 
     public int getId() {
         return id;
@@ -37,20 +39,21 @@ public class LearnerAccount extends UserAccount {
         this.id = id;
     }
 
-    public Training getRegisteredTraining() {
-        return registeredTraining;
-    }
-
-    public void setRegisteredTraining(Training registeredTraining) {
-        this.registeredTraining = registeredTraining;
-    }
 
     public LearnerAccount(String firstName, String lastName, String email, String phone, String password,
-            Training trainingLearner) {
+            List<TrainingModule> registeredTrainingList) {
         super(firstName, lastName, email, phone, password);
-        this.registeredTraining = trainingLearner;
+        this.registeredTrainingList = registeredTrainingList;
     }
 
     public LearnerAccount() {
+    }
+
+    public List<TrainingModule> getRegisteredTrainingList() {
+        return registeredTrainingList;
+    }
+
+    public void setRegisteredTrainingList(List<TrainingModule> registeredTrainingList) {
+        this.registeredTrainingList = registeredTrainingList;
     }
 }
