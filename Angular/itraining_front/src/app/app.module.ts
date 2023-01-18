@@ -11,6 +11,19 @@ import {TeacherAccountComponent} from "./account/teacher-account/teacher-account
 import {LearnerAccountComponent} from "./account/learner-account/learner-account.component";
 import {AdministratorAccountComponent} from "./account/administrator-account/administrator-account.component";
 import {InscriptionComponent} from "./inscription/inscription.component";
+import {ConnectedComponent} from "./account/connected.component/connected.component";
+import {
+  InscriptionFormateurComponent
+} from "./inscription/inscription-formateur.component/inscription-formateur.component";
+import {ConnectionComponent} from "./connection/connection.component";
+import { TrainingFieldComponent } from './training-field/training-field.component';
+import { ContactComponent } from './contact/contact.component';
+import { ProgrammingLangagesComponent } from './training-field/programming-langages/programming-langages.component';
+import { ReseauxComponent } from './training-field/reseaux/reseaux.component';
+import { GestionProjetComponent } from './training-field/gestion-projet/gestion-projet.component';
+import { SystemesExploitationComponent } from './training-field/systemes-exploitation/systemes-exploitation.component';
+import { JavaComponent } from './training-field/programming-langages/java/java.component';
+import { ProfileComponent } from './account/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +35,18 @@ import {InscriptionComponent} from "./inscription/inscription.component";
     TeacherAccountComponent,
     LearnerAccountComponent,
     AdministratorAccountComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    ConnectedComponent,
+    InscriptionFormateurComponent,
+    ConnectionComponent,
+    TrainingFieldComponent,
+    ContactComponent,
+    ProgrammingLangagesComponent,
+    ReseauxComponent,
+    GestionProjetComponent,
+    SystemesExploitationComponent,
+    JavaComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
