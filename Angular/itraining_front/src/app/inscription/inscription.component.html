@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Inscription</title>
+</head>
+<body>
+
+  <div class="content">
+
+    <h1>Inscription</h1>
+
+    <form>
+
+      <label for="nom">Nom*</label>
+      <input id="nom" class="input-text">
+      <label for="prenom">Prénom*</label>
+      <input id="prenom" class="input-text">
+      <label for="mail">Mail*</label>
+      <input id="mail" class="input-text">
+      <label for="tel">Téléphone*</label>
+      <input id="tel" class="input-text">
+      <label for="mdp">Mot de passe*</label>
+      <input id="mdp" class="input-text">
+      <p class="italic">8 caractères minimum</p>
+
+      <div class="radio-form">
+        <div class="radio-button">
+          <input type="radio" name="user" id="apprenant" checked>
+          <label for="apprenant" class="margin-left">Apprenant</label>
+        </div>
+        <div class="radio-button">
+          <input type="radio" name="user" id="formateur">
+          <label for="formateur" class="margin-left">Formateur</label>
+        </div>
+        <div class="radio-button">
+          <input type="radio" name="user" id="admin">
+          <label for="admin" class="margin-left">Administrateur</label>
+        </div>
+      </div>
+
+      <p>*champs obligatoires</p>
+
+      <div class="center">
+        <button>Valider</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</body>
+</html>
