@@ -11,6 +11,10 @@ import {TeacherAccountComponent} from "./account/teacher-account/teacher-account
 import {LearnerAccountComponent} from "./account/learner-account/learner-account.component";
 import {AdministratorAccountComponent} from "./account/administrator-account/administrator-account.component";
 import {InscriptionComponent} from "./inscription/inscription.component";
+import {ConnectedComponent} from "./account/connected.component/connected.component";
+import {
+  InscriptionFormateurComponent
+} from "./inscription/inscription-formateur.component/inscription-formateur.component";
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import {InscriptionComponent} from "./inscription/inscription.component";
     TeacherAccountComponent,
     LearnerAccountComponent,
     AdministratorAccountComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    ConnectedComponent,
+    InscriptionFormateurComponent
   ],
   imports: [
     BrowserModule,

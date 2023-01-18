@@ -6,6 +6,9 @@ import {AdministratorAccountComponent} from "./account/administrator-account/adm
 import {TeacherAccountComponent} from "./account/teacher-account/teacher-account.component";
 import {LearnerAccountComponent} from "./account/learner-account/learner-account.component";
 import {InscriptionComponent} from "./inscription/inscription.component";
+import {
+  InscriptionFormateurComponent
+} from "./inscription/inscription-formateur.component/inscription-formateur.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -14,10 +17,9 @@ const routes: Routes = [
     {path: 'administrator', component: AdministratorAccountComponent},
     {path: 'teacher', component: TeacherAccountComponent},
     {path: 'learner', component: LearnerAccountComponent}
-  ]
-  },
+  ]},
   {path: 'inscription', component: InscriptionComponent},
-
+  {path: 'inscription-formateur', component: InscriptionFormateurComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '**', redirectTo: 'home'},
 ];
