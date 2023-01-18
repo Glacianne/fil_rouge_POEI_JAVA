@@ -21,7 +21,7 @@ public class TrainingModule {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     public int id;
-    public String intitulé;
+    public String title;
 
     public Date startDate;
 
@@ -89,17 +89,17 @@ public class TrainingModule {
         this.registeredLearnerList = registeredLearnerList;
     }
 
-    public String getIntitulé() {
-        return intitulé;
+    public String getTitle() {
+        return title;
     }
 
-    public void setIntitulé(String intitulé) {
-        this.intitulé = intitulé;
+    public void setTitle(String intitulé) {
+        this.title = intitulé;
     }
 
     public TrainingModule(String intitulé, Date startDate, Date endDate, List<Session> listSession,
             List<LearnerAccount> registeredLearnerList) {
-        this.intitulé = intitulé;
+        this.title = intitulé;
         this.startDate = startDate;
         this.endDate = endDate;
         this.sessionList = listSession;
