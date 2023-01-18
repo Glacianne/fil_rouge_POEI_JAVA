@@ -10,6 +10,7 @@ import {
   InscriptionFormateurComponent
 } from "./inscription/inscription-formateur.component/inscription-formateur.component";
 import {ConnectionComponent} from "./connection.component/connection.component";
+import {TrainingFieldComponent} from "./training-field/training-field.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
     {path: 'teacher', component: TeacherAccountComponent},
     {path: 'learner', component: LearnerAccountComponent}
   ]},
+  {path: 'formations-catalogue', component: TrainingFieldComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '**', redirectTo: 'home'},
 ];
