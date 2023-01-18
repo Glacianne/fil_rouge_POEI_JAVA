@@ -1,7 +1,12 @@
 package com.example.itraining_api.entity;
 
-import java.util.Date;
 
+import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,8 +34,6 @@ public class Session {
     @JoinColumn(name = "sessionTeacher")
     public TeacherAccount teacher;
 
-    public int nbSession;
-
     public Date startDate;
 
     public Date endDate;
@@ -43,13 +46,6 @@ public class Session {
     @JoinColumn(name = "trainingmodule_id")
     public TrainingModule affiliatedTrainingModule;
 
-    public int getNbSession() {
-        return nbSession;
-    }
-
-    public void setNb_session(int nbSession) {
-        this.nbSession = nbSession;
-    }
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
@@ -59,6 +55,8 @@ public class Session {
         this.status = status;
     }
 
+
+
     public int getId() {
         return id;
     }
@@ -66,6 +64,7 @@ public class Session {
     public void setId(int id) {
         this.id = id;
     }
+
 
     public Date getStartDate() {
         return startDate;
@@ -115,10 +114,9 @@ public class Session {
         this.affiliatedTrainingModule = trainingSession;
     }
 
-    public Session(TeacherAccount teacher, int nbSession, Date startDate, Date endDate, String room, Boolean status,
+    public Session(TeacherAccount teacher, Date startDate, Date endDate, String room, Boolean status,
             TrainingModule trainingSession) {
         this.teacher = teacher;
-        this.nbSession = nbSession;
         this.startDate = startDate;
         this.endDate = endDate;
         this.room = room;
@@ -129,3 +127,5 @@ public class Session {
     public Session() {
     }
 }
+
+

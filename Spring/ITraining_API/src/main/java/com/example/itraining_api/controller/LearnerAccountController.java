@@ -77,17 +77,17 @@ public class LearnerAccountController {
         return ResponseEntity.ok(hashMap);
     }
 
+
     @DeleteMapping("/learner/{id}")
-    public ResponseEntity<String> deleteLearner(@PathVariable("id") int id) {
-        Map<String, LearnerAccount> hashMap = new HashMap<String, LearnerAccount>();
-        try {
-            hashMap.put("Etudiant supprimé", learnerAccountService.deleteLearnerById(id));
+    public ResponseEntity<String> deleteLearner(@PathVariable("id") int id){
+        try{
+            learnerAccountService.deleteLearnerById(id);
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("deleted", Boolean.TRUE);
         } catch (Exception e) {
-            hashMap.put("Erreur à cause de " + e.getMessage(), null);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An exception has occured due to " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An exception has occured due to " + e.getMessage());
         }
-        return ResponseEntity.ok("Prof supprimé");
+        return ResponseEntity.ok("Elève supprimé");
     }
 
 }

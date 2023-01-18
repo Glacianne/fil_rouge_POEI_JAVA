@@ -35,8 +35,7 @@ public class LearnerAccountServiceImpl implements LearnerAccountService {
     }
 
     @Override
-    public LearnerAccount deleteLearnerById(int id) {
+    public void deleteLearnerById(int id) {
         learnerAccountRepository.deleteById(id);
-        return null;
     }
 }

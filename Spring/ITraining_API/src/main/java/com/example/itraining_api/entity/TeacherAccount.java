@@ -1,5 +1,8 @@
 package com.example.itraining_api.entity;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.util.List;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -29,12 +32,35 @@ public class TeacherAccount extends UserAccount {
     @OneToMany(mappedBy = "teacher")
     public List<Session> sessionList;
 
-    public TeacherAccount(String firstName, String lastName, String email, String phone, String password,
-            String subject, Double experience, List<Session> teacherSession) {
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public Double getExperience() {
+        return experience;
+    }
+
+    public void setExperience(Double experience) {
+        this.experience = experience;
+    }
+
+    public List<Session> getSessionList() {
+        return sessionList;
+    }
+
+    public void setSessionList(List<Session> sessionList) {
+        sessionList = sessionList;
+    }
+
+    public TeacherAccount(String firstName, String lastName, String email, String phone, String password, String subject, Double experience, List<Session> sessionList) {
         super(firstName, lastName, email, phone, password);
         this.subject = subject;
         this.experience = experience;
-        sessionList = teacherSession;
+        sessionList = sessionList;
     }
 
     public TeacherAccount() {

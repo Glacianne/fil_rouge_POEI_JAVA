@@ -30,9 +30,9 @@ public class AdministratorAccountServiceImpl implements AdministratorAccountServ
     }
 
     @Override
-    public AdministratorAccount deleteAdministratorById(int id) {
+    public void deleteAdministratorById(int id) {
         administratorAccountRepository.deleteById(id);
-        return null;
+
     }
 
     @Override
