@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import {HomeComponent} from "./home/home.component";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {FooterComponent} from "./footer/footer.component";
-import {CopyrightComponent} from "./copyright/copyright.component";
 import {AccountComponent} from "./account/account.component";
 import {TeacherAccountComponent} from "./account/teacher-account/teacher-account.component";
 import {LearnerAccountComponent} from "./account/learner-account/learner-account.component";
@@ -19,7 +18,6 @@ import {InscriptionComponent} from "./inscription/inscription.component";
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    CopyrightComponent,
     AccountComponent,
     TeacherAccountComponent,
     LearnerAccountComponent,

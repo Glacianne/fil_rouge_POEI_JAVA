@@ -20,17 +20,14 @@ img{
 a{
   color: white;
   text-decoration: none;
-
   &:hover{
     color: #D9D9D9;
   }
-
   &:active{
     color: white;
     text-decoration: underline;
     text-decoration: #B93017;
   }
-
 }
 
 .navbar{
