@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { controllerPaths, environment } from 'src/environment/environment';
+import { controllerPaths } from 'src/environment/environment';
 import { ILearnerAccount } from 'src/model/learnerAccount';
 
 @Injectable({
@@ -10,20 +10,32 @@ import { ILearnerAccount } from 'src/model/learnerAccount';
 export class LearnerService {
   learnerList$ = new BehaviorSubject<ILearnerAccount[]>([]);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.findAllLearner().subscribe((res) => {
+      this.learnerList$.next(res);
+    });
+  }
 
   public findAllLearner(): Observable<ILearnerAccount[]> {
-    return this.http.get(`${controllerPaths.learnerControllerPath}/learner`).pipe(
-      map((res: any) => {
-        const learnerList: ILearnerAccount[] = [];
-        for (const learner in res) {
-          const learner: ILearnerAccount = {
-            ...res,
-          };
-          learnerList.push(res);
-        }
-        return learnerList;
-      })
-    );
+    return this.http
+      .get(`${controllerPaths.learnerControllerPath}/learner`)
+      .pipe(
+        map((res: any) => {
+          const learnerList: ILearnerAccount[] = [];
+          for (const learner in res) {
+            const learner: ILearnerAccount = {
+              ...res,
+            };
+            learnerList.push(res);
+          }
+          return learnerList;
+        })
+      );
+  }
+
+  public createLearner(
+
+  ): Observable<any> {
+
   }
 }
