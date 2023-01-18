@@ -4,6 +4,7 @@ package com.example.itraining_api.entity;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -22,10 +23,10 @@ public class Training {
     public Date startDate;
 
     public Date endDate;
-
+@JsonIgnore
     @OneToMany(mappedBy = "trainingSession")
     public List<Session> listSession;
-
+@JsonIgnore
     @OneToMany(mappedBy = "registeredTraining")
     public List<LearnerAccount> registeredLearners;
 

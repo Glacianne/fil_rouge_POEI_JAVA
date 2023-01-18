@@ -35,9 +35,8 @@ public class TeacherAccountServiceImpl implements TeacherAccountService{
     }
 
     @Override
-    public TeacherAccount deleteTeacherById(int id) {
+    public void deleteTeacherById(int id) {
         teacherAccountRepository.deleteById(id);
-        return null;
     }
 
     @Override

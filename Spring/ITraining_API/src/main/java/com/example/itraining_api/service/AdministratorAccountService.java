@@ -14,7 +14,7 @@ public interface AdministratorAccountService {
 
     AdministratorAccount updateAdministrator(AdministratorAccount administratorAccount, int id);
 
-    AdministratorAccount deleteAdministratorById(int id);
+    void deleteAdministratorById(int id);
 
     AdministratorAccount findAdministratorById(int id);
 

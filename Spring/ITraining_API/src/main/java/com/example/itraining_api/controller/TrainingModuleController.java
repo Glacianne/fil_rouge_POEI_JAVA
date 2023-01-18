@@ -35,7 +35,7 @@ public class TrainingModuleController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @DeleteMapping("/trainingModule/{id}")
+    @DeleteMapping("/trainingModuleDelete/{id}")
     public ResponseEntity<String> deleteTrainingModule(@PathVariable int id){
         try{
             trainingModuleService.deleteTrainingModuleById(id);
@@ -74,17 +74,38 @@ public class TrainingModuleController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @GetMapping("/trainingModule/{id}")
-    public ResponseEntity<Map<String, Training>> findTrainingModuleById(@PathVariable int id){
+    @GetMapping("/trainingModuleFind/{id}")
+    public ResponseEntity<Map<String, Training>> findTrainingModuleById(@PathVariable int id) {
         Map<String, Training> hashMap = new HashMap<String, Training>();
-        try{
+        try {
             hashMap.put("Formation trouvée", trainingModuleService.findTrainingModuleById(id));
         } catch (Exception e) {
             hashMap.put("Erreur à cause de " + e.getMessage(), null);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(hashMap);
         }
         return ResponseEntity.ok(hashMap);
-}
+    }
+        @PostMapping("/addLearnerForTraining")
+        public ResponseEntity<Map<String, LearnerAccount>> addLearner(@RequestParam int trainingId, @RequestParam int learnerId){
+            Map<String, LearnerAccount> hashMap = new HashMap<String, LearnerAccount>();
+            try {
+                Training training = trainingModuleService.findTrainingModuleById(trainingId);
+                LearnerAccount learnerAccount = learnerAccountRepository.findById(learnerId).orElse(null);
+                if (training == null) {
+                    hashMap.put("La formation n'a pas été trouvée", null);
+                }
+                if (learnerAccount == null) {
+                    hashMap.put("L'apprenant n'a pas été trouvé", null);
+                }
+                learnerAccount.setRegisteredTraining(training);
+                hashMap.put("Formation attribuée à l'apprenant", learnerAccountRepository.save(learnerAccount));
+            }catch (Exception e) {
+                hashMap.put("Erreur à cause de " + e.getMessage(), null);
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(hashMap);
+            }
+            return ResponseEntity.ok(hashMap);
+        }
+
+    }
 
 
-}

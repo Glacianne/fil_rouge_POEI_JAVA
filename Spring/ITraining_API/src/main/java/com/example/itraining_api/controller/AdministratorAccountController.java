@@ -71,16 +71,16 @@ public class AdministratorAccountController {
 
 
     @DeleteMapping("/suppressAdministrator/{id}")
-    public ResponseEntity<String> deleteAdministrator(@PathVariable("id") int id){
-        Map<String, AdministratorAccount> hashMap = new HashMap<String, AdministratorAccount>();
+    public ResponseEntity<String> deleteTrainingModule(@PathVariable int id){
         try{
-            hashMap.put("Prof supprimé", administratorAccountService.deleteAdministratorById(id));
-        } catch(Exception e){
-            hashMap.put("Erreur à cause de " + e.getMessage(), null);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An exception has occured due to " + e.getMessage());
+            administratorAccountService.deleteAdministratorById(id);
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("deleted", Boolean.TRUE);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An exception has occured due to " + e.getMessage());
         }
-        return ResponseEntity.ok("Prof supprimé");
+        return ResponseEntity.ok("Administrateur supprimé");
     }
 
     }

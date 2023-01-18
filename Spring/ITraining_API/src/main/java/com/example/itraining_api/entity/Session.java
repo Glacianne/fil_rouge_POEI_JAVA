@@ -19,13 +19,11 @@ public class Session {
     @GenericGenerator(name = "native",strategy = "native")
     public int id;
 
-    @JsonIgnore
+@JsonIgnore
   @ManyToOne
     @JoinColumn(name="sessionTeacher")
     public TeacherAccount teacher;
 
-    public int nbSession;
-    
     public Date startDate;
 
     public Date endDate;
@@ -33,22 +31,12 @@ public class Session {
     public String room;
 
     public Boolean status;
-    @JsonIgnore
+
+@JsonIgnore
    @ManyToOne
     @JoinColumn(name="training_id")
     public Training trainingSession;
 
-
-
-
-
-    public int getNbSession() {
-        return nbSession;
-    }
-
-    public void setNb_session(int nbSession) {
-        this.nbSession = nbSession;
-    }
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
@@ -117,9 +105,8 @@ public class Session {
         this.trainingSession = trainingSession;
     }
 
-    public Session(TeacherAccount teacher, int nb_session, Date startDate, Date endDate, String room, Boolean status, Training trainingSession) {
+    public Session(TeacherAccount teacher, Date startDate, Date endDate, String room, Boolean status, Training trainingSession) {
         this.teacher = teacher;
-        this.nbSession = nbSession;
         this.startDate = startDate;
         this.endDate = endDate;
         this.room = room;
@@ -129,6 +116,8 @@ public class Session {
 
     public Session() {
     }
+
+
 }
 
 

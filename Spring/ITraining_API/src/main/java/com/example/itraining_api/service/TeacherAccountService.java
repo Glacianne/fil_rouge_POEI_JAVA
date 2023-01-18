@@ -14,7 +14,7 @@ public interface TeacherAccountService {
 
     TeacherAccount updateTeacher(TeacherAccount teacherAccount, int id);
 
-    TeacherAccount deleteTeacherById(int id);
+    void deleteTeacherById(int id);
 
 
     TeacherAccount findTeacherById(int id);
