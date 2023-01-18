@@ -30,6 +30,11 @@ section{
 button{
   color: white;
   font-size: xx-large;
+
+  &:hover{
+    opacity: 90%;
+    cursor: pointer;
+  }
 }
 
 .h1{

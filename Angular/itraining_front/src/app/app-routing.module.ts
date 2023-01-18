@@ -9,7 +9,7 @@ import {InscriptionComponent} from "./inscription/inscription.component";
 import {
   InscriptionFormateurComponent
 } from "./inscription/inscription-formateur.component/inscription-formateur.component";
-import {ConnectionComponent} from "./connection.component/connection.component";
+import {ConnectionComponent} from "./connection/connection.component";
 import {TrainingFieldComponent} from "./training-field/training-field.component";
 
 const routes: Routes = [
