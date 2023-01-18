@@ -15,6 +15,7 @@ import {ConnectedComponent} from "./account/connected.component/connected.compon
 import {
   InscriptionFormateurComponent
 } from "./inscription/inscription-formateur.component/inscription-formateur.component";
+import {ConnectionComponent} from "./connection.component/connection.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {
     AdministratorAccountComponent,
     InscriptionComponent,
     ConnectedComponent,
-    InscriptionFormateurComponent
+    InscriptionFormateurComponent,
+    ConnectionComponent
   ],
   imports: [
     BrowserModule,
