@@ -18,6 +18,10 @@ import {
 import {ConnectionComponent} from "./connection/connection.component";
 import { TrainingFieldComponent } from './training-field/training-field.component';
 import { ContactComponent } from './contact/contact.component';
+import { ProgrammingLangagesComponent } from './training-field/programming-langages/programming-langages.component';
+import { ReseauxComponent } from './training-field/reseaux/reseaux.component';
+import { GestionProjetComponent } from './training-field/gestion-projet/gestion-projet.component';
+import { SystemesExploitationComponent } from './training-field/systemes-exploitation/systemes-exploitation.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { ContactComponent } from './contact/contact.component';
     InscriptionFormateurComponent,
     ConnectionComponent,
     TrainingFieldComponent,
-    ContactComponent
+    ContactComponent,
+    ProgrammingLangagesComponent,
+    ReseauxComponent,
+    GestionProjetComponent,
+    SystemesExploitationComponent
   ],
   imports: [
     BrowserModule,
