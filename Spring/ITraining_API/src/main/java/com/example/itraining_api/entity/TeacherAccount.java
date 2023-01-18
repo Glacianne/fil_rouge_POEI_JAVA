@@ -1,36 +1,36 @@
 package com.example.itraining_api.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.List;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
 @Entity
-@Table(name="TeacherAccount")
+@Table(name = "TeacherAccount")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class TeacherAccount extends UserAccount {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     public int id;
 
     public String subject;
 
     public Double experience;
-@JsonIgnore
+
     @OneToMany(mappedBy = "teacher")
-    public List<Session> TeacherSession;
-
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(int id) {
-        this.id = id;
-    }
+    public List<Session> sessionList;
 
     public String getSubject() {
         return subject;
@@ -48,19 +48,19 @@ public class TeacherAccount extends UserAccount {
         this.experience = experience;
     }
 
-    public List<Session> getTeacherSession() {
-        return TeacherSession;
+    public List<Session> getSessionList() {
+        return sessionList;
     }
 
-    public void setTeacherSession(List<Session> teacherSession) {
-        TeacherSession = teacherSession;
+    public void setSessionList(List<Session> sessionList) {
+        sessionList = sessionList;
     }
 
-    public TeacherAccount(String firstName, String lastName, String email, String phone, String password, String subject, Double experience, List<Session> teacherSession) {
+    public TeacherAccount(String firstName, String lastName, String email, String phone, String password, String subject, Double experience, List<Session> sessionList) {
         super(firstName, lastName, email, phone, password);
         this.subject = subject;
         this.experience = experience;
-        TeacherSession = teacherSession;
+        sessionList = sessionList;
     }
 
     public TeacherAccount() {

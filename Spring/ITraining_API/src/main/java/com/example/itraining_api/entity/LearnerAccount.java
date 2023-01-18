@@ -1,26 +1,35 @@
 package com.example.itraining_api.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import java.util.List;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
 @Entity
-@Table(name="LearnerAccount")
+@Table(name = "LearnerAccount")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class LearnerAccount extends UserAccount{
+public class LearnerAccount extends UserAccount {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     public int id;
 
     @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name="TRAINING_ID")
-    public Training registeredTraining;
+    @ManyToMany
+    @JoinColumn(name = "TRAINING_ID")
+    public List<TrainingModule> registeredTrainingList;
 
     public int getId() {
         return id;
@@ -30,19 +39,21 @@ public class LearnerAccount extends UserAccount{
         this.id = id;
     }
 
-    public Training getRegisteredTraining() {
-        return registeredTraining;
-    }
 
-    public void setRegisteredTraining(Training registeredTraining) {
-        this.registeredTraining = registeredTraining;
-    }
-
-    public LearnerAccount(String firstName, String lastName, String email, String phone, String password, Training trainingLearner) {
+    public LearnerAccount(String firstName, String lastName, String email, String phone, String password,
+            List<TrainingModule> registeredTrainingList) {
         super(firstName, lastName, email, phone, password);
-        this.registeredTraining = trainingLearner;
+        this.registeredTrainingList = registeredTrainingList;
     }
 
     public LearnerAccount() {
+    }
+
+    public List<TrainingModule> getRegisteredTrainingList() {
+        return registeredTrainingList;
+    }
+
+    public void setRegisteredTrainingList(List<TrainingModule> registeredTrainingList) {
+        this.registeredTrainingList = registeredTrainingList;
     }
 }

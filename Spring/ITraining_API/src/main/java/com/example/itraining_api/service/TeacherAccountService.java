@@ -1,10 +1,8 @@
 package com.example.itraining_api.service;
 
+import java.util.List;
 
 import com.example.itraining_api.entity.TeacherAccount;
-
-import java.util.List;
-import java.util.Optional;
 
 public interface TeacherAccountService {
 
@@ -15,7 +13,6 @@ public interface TeacherAccountService {
     TeacherAccount updateTeacher(TeacherAccount teacherAccount, int id);
 
     void deleteTeacherById(int id);
-
 
     TeacherAccount findTeacherById(int id);
 

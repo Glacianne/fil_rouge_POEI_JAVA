@@ -9,19 +9,29 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 @Entity
-@Table(name="Session")
+@Table(name = "Session")
 
 public class Session {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     public int id;
 
-@JsonIgnore
-  @ManyToOne
-    @JoinColumn(name="sessionTeacher")
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "sessionTeacher")
     public TeacherAccount teacher;
 
     public Date startDate;
@@ -31,11 +41,10 @@ public class Session {
     public String room;
 
     public Boolean status;
-
-@JsonIgnore
-   @ManyToOne
-    @JoinColumn(name="training_id")
-    public Training trainingSession;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "trainingmodule_id")
+    public TrainingModule affiliatedTrainingModule;
 
 
     public void setStartDate(Date startDate) {
@@ -97,27 +106,26 @@ public class Session {
         this.teacher = teacher;
     }
 
-    public Training getTrainingSession() {
-        return trainingSession;
+    public TrainingModule getAffiliatedTrainingModule() {
+        return affiliatedTrainingModule;
     }
 
-    public void setTrainingSession(Training trainingSession) {
-        this.trainingSession = trainingSession;
+    public void setAffiliatedTrainingModule(TrainingModule trainingSession) {
+        this.affiliatedTrainingModule = trainingSession;
     }
 
-    public Session(TeacherAccount teacher, Date startDate, Date endDate, String room, Boolean status, Training trainingSession) {
+    public Session(TeacherAccount teacher, Date startDate, Date endDate, String room, Boolean status,
+            TrainingModule trainingSession) {
         this.teacher = teacher;
         this.startDate = startDate;
         this.endDate = endDate;
         this.room = room;
         this.status = status;
-        this.trainingSession = trainingSession;
+        this.affiliatedTrainingModule = trainingSession;
     }
 
     public Session() {
     }
-
-
 }
 
 

@@ -1,21 +1,17 @@
 package com.example.itraining_api.service;
 
-import com.example.itraining_api.entity.AdministratorAccount;
+import java.util.List;
 
-import com.example.itraining_api.entity.TeacherAccount;
-import com.example.itraining_api.repository.AdministratorAccountRepository;
-import com.example.itraining_api.repository.LearnerAccountRepository;
-import com.example.itraining_api.repository.TeacherAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.example.itraining_api.entity.AdministratorAccount;
+import com.example.itraining_api.repository.AdministratorAccountRepository;
 
 @Service
-public class AdministratorAccountServiceImpl implements AdministratorAccountService{
+public class AdministratorAccountServiceImpl implements AdministratorAccountService {
     @Autowired
     private AdministratorAccountRepository administratorAccountRepository;
-
 
     @Override
     public AdministratorAccount saveAdministrator(AdministratorAccount administratorAccount) {
@@ -24,7 +20,7 @@ public class AdministratorAccountServiceImpl implements AdministratorAccountServ
 
     @Override
     public List<AdministratorAccount> findAdministratorAccountList() {
-        return (List<AdministratorAccount>)  administratorAccountRepository.findAll();
+        return (List<AdministratorAccount>) administratorAccountRepository.findAll();
     }
 
     @Override
