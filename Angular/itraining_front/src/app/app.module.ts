@@ -23,6 +23,7 @@ import { ReseauxComponent } from './training-field/reseaux/reseaux.component';
 import { GestionProjetComponent } from './training-field/gestion-projet/gestion-projet.component';
 import { SystemesExploitationComponent } from './training-field/systemes-exploitation/systemes-exploitation.component';
 import { JavaComponent } from './training-field/programming-langages/java/java.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { JavaComponent } from './training-field/programming-langages/java/java.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

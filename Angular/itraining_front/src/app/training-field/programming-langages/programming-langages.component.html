@@ -10,10 +10,10 @@
   <h1>Nos formations en langages de programmation</h1>
 
   <div class="body">
-    <ul class="formations">
-      <li>C++</li>
+    <ul class="formations" *ngFor="let trainingModule of trainingModuleList$ | async">
+      <!-- <li>C++</li>
       <li routerLink="../formation-java">Java</li>
-      <li>PHP</li>
+      <li>PHP</li> -->
     </ul>
     <div class="image"><img src="assets/10168.jpg"></div>
   </div>
