@@ -13,5 +13,5 @@ public interface LearnerAccountService {
 
     LearnerAccount updateLearner(LearnerAccount learnerAccount, int id);
 
-    LearnerAccount deleteLearnerById(int id);
+    void deleteLearnerById(int id);
 }
