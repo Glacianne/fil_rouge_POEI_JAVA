@@ -13,19 +13,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.itraining_api.entity.AdministratorAccount;
 import com.example.itraining_api.service.AdministratorAccountService;
 
 @RestController
+@RequestMapping("/administratorController")
 public class AdministratorAccountController {
 
     @Autowired
     private AdministratorAccountService administratorAccountService;
 
-    @GetMapping("/allAdministrator")
-    public ResponseEntity<Map<String, List<AdministratorAccount>>> findAllTrainingModule() {
+    @GetMapping("/administrator")
+    public ResponseEntity<Map<String, List<AdministratorAccount>>> findAllAdministrator() {
         Map<String, List<AdministratorAccount>> hashMap = new HashMap<String, List<AdministratorAccount>>();
         try {
             hashMap.put("Catalogue chargé", administratorAccountService.findAdministratorAccountList());
@@ -36,7 +38,7 @@ public class AdministratorAccountController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @GetMapping("/administratorAccount/{id}")
+    @GetMapping("/administrator/{id}")
     public ResponseEntity<Map<String, AdministratorAccount>> findAdministratorById(@PathVariable int id) {
         Map<String, AdministratorAccount> hashMap = new HashMap<String, AdministratorAccount>();
         try {
@@ -48,8 +50,8 @@ public class AdministratorAccountController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @PostMapping("/addAdministrator")
-    public ResponseEntity<Map<String, AdministratorAccount>> saveAdministrator(
+    @PostMapping("/administrator")
+    public ResponseEntity<Map<String, AdministratorAccount>> createAdministrator(
             @RequestBody AdministratorAccount administratorAccount) {
         Map<String, AdministratorAccount> hashMap = new HashMap<String, AdministratorAccount>();
         try {
@@ -62,8 +64,8 @@ public class AdministratorAccountController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @PutMapping("/updateAdministrator/{id}")
-    public ResponseEntity<Map<String, AdministratorAccount>> updateTrainingModule(@PathVariable("id") int id,
+    @PutMapping("/administrator/{id}")
+    public ResponseEntity<Map<String, AdministratorAccount>> updateAdministrator(@PathVariable("id") int id,
             @RequestBody AdministratorAccount administratorAccount) {
         Map<String, AdministratorAccount> hashMap = new HashMap<String, AdministratorAccount>();
         try {
@@ -77,7 +79,7 @@ public class AdministratorAccountController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @DeleteMapping("/suppressAdministrator/{id}")
+    @DeleteMapping("/administrator/{id}")
     public ResponseEntity<String> deleteAdministrator(@PathVariable("id") int id) {
         Map<String, AdministratorAccount> hashMap = new HashMap<String, AdministratorAccount>();
         try {

@@ -40,8 +40,8 @@ public class Session {
     public Boolean status;
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "training_id")
-    public Training trainingSession;
+    @JoinColumn(name = "trainingmodule_id")
+    public TrainingModule affiliatedTrainingModule;
 
     public int getNbSession() {
         return nbSession;
@@ -107,23 +107,23 @@ public class Session {
         this.teacher = teacher;
     }
 
-    public Training getTrainingSession() {
-        return trainingSession;
+    public TrainingModule getAffiliatedTrainingModule() {
+        return affiliatedTrainingModule;
     }
 
-    public void setTrainingSession(Training trainingSession) {
-        this.trainingSession = trainingSession;
+    public void setAffiliatedTrainingModule(TrainingModule trainingSession) {
+        this.affiliatedTrainingModule = trainingSession;
     }
 
-    public Session(TeacherAccount teacher, int nb_session, Date startDate, Date endDate, String room, Boolean status,
-            Training trainingSession) {
+    public Session(TeacherAccount teacher, int nbSession, Date startDate, Date endDate, String room, Boolean status,
+            TrainingModule trainingSession) {
         this.teacher = teacher;
         this.nbSession = nbSession;
         this.startDate = startDate;
         this.endDate = endDate;
         this.room = room;
         this.status = status;
-        this.trainingSession = trainingSession;
+        this.affiliatedTrainingModule = trainingSession;
     }
 
     public Session() {

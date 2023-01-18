@@ -1,18 +1,18 @@
 package com.example.itraining_api.service;
 
-import com.example.itraining_api.entity.Training;
+import com.example.itraining_api.entity.TrainingModule;
 
 import java.util.List;
 
 public interface TrainingModuleService {
 
-    Training saveTrainingModule(Training training);
+    TrainingModule saveTrainingModule(TrainingModule training);
 
-    List<Training> findTrainingModuleList();
+    List<TrainingModule> findTrainingModuleList();
 
-    Training findTrainingModuleById(int id);
+    TrainingModule findTrainingModuleById(int id);
 
-    Training updateTrainingModule(Training training, int id);
+    TrainingModule updateTrainingModule(TrainingModule training, int id);
 
     void deleteTrainingModuleById(int id);
 }

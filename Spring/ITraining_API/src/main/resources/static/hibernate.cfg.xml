@@ -16,6 +16,6 @@
     <mapping class="com.example.itraining_api.entity.LearnerAccount" />
         <mapping class="com.example.itraining_api.entity.AdministratorAccount" />
     <mapping class="com.example.itraining_api.entity.Session" />
-    <mapping class="com.example.itraining_api.entity.Training" />
+    <mapping class="com.example.itraining_api.entity.TrainingModule" />
     </session-factory>
 </hibernate-configuration>
