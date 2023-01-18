@@ -54,6 +54,10 @@ form{
     border: #B93017;
     background-color: #B93017;
     border-radius: 4px;
+    &:hover {
+      opacity: 80%;
+      cursor: pointer;
+    }
   }
 
   .center{
