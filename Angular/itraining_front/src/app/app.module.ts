@@ -22,6 +22,7 @@ import { ProgrammingLangagesComponent } from './training-field/programming-langa
 import { ReseauxComponent } from './training-field/reseaux/reseaux.component';
 import { GestionProjetComponent } from './training-field/gestion-projet/gestion-projet.component';
 import { SystemesExploitationComponent } from './training-field/systemes-exploitation/systemes-exploitation.component';
+import { JavaComponent } from './training-field/programming-langages/java/java.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SystemesExploitationComponent } from './training-field/systemes-exploit
     ProgrammingLangagesComponent,
     ReseauxComponent,
     GestionProjetComponent,
-    SystemesExploitationComponent
+    SystemesExploitationComponent,
+    JavaComponent
   ],
   imports: [
     BrowserModule,

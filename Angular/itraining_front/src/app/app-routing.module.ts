@@ -16,6 +16,7 @@ import {ProgrammingLangagesComponent} from "./training-field/programming-langage
 import {ReseauxComponent} from "./training-field/reseaux/reseaux.component";
 import {GestionProjetComponent} from "./training-field/gestion-projet/gestion-projet.component";
 import {SystemesExploitationComponent} from "./training-field/systemes-exploitation/systemes-exploitation.component";
+import {JavaComponent} from "./training-field/programming-langages/java/java.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
   },
   {path: 'formations-catalogue', component: TrainingFieldComponent},
   {path: 'langages-programmation', component: ProgrammingLangagesComponent},
+  {path: 'formation-java', component: JavaComponent},
   {path: 'reseaux', component: ReseauxComponent},
   {path: 'gestion-projet', component: GestionProjetComponent},
   {path: 'systemes-exploitation', component: SystemesExploitationComponent},
