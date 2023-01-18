@@ -1,8 +1,8 @@
 package com.example.itraining_api.controller;
 
 import com.example.itraining_api.entity.LearnerAccount;
-import com.example.itraining_api.entity.Training;
 import com.example.itraining_api.repository.LearnerAccountRepository;
+import com.example.itraining_api.service.LearnerAccountService;
 import com.example.itraining_api.service.TrainingModuleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +34,10 @@ public class TrainingModuleController {
 
     @Autowired
     private TrainingModuleService trainingModuleService;
+
+    @Autowired
+    private LearnerAccountService learnerAccountService;
+
 
     @PostMapping("/trainingModule")
     public ResponseEntity<Map<String, TrainingModule>> createTrainingModule(@RequestBody TrainingModule trainingModule) {
@@ -90,7 +94,7 @@ public class TrainingModuleController {
 
     @GetMapping("/trainingModule/{id}")
     public ResponseEntity<Map<String, TrainingModule>> findTrainingModuleById(@PathVariable int id) {
-        Map<String, TrainingModule> hashMap = new HashMap<String, Training>();
+        Map<String, TrainingModule> hashMap = new HashMap<String, TrainingModule>();
         try {
             hashMap.put("Formation trouvée", trainingModuleService.findTrainingModuleById(id));
         } catch (Exception e) {
@@ -103,16 +107,20 @@ public class TrainingModuleController {
         public ResponseEntity<Map<String, LearnerAccount>> addLearner(@RequestParam int trainingId, @RequestParam int learnerId){
             Map<String, LearnerAccount> hashMap = new HashMap<String, LearnerAccount>();
             try {
-                Training training = trainingModuleService.findTrainingModuleById(trainingId);
-                LearnerAccount learnerAccount = learnerAccountRepository.findById(learnerId).orElse(null);
+                TrainingModule training = trainingModuleService.findTrainingModuleById(trainingId);
+                LearnerAccount learnerAccount = learnerAccountService.findLearnerById(learnerId);
                 if (training == null) {
                     hashMap.put("La formation n'a pas été trouvée", null);
                 }
-                if (learnerAccount == null) {
+               else { if (learnerAccount == null) {
                     hashMap.put("L'apprenant n'a pas été trouvé", null);
                 }
-                learnerAccount.setRegisteredTraining(training);
-                hashMap.put("Formation attribuée à l'apprenant", learnerAccountRepository.save(learnerAccount));
+                else {
+                    List<TrainingModule> trainingModuleList = learnerAccount.getRegisteredTrainingList();
+                    trainingModuleList.add(training);
+                    learnerAccount.setRegisteredTrainingList(trainingModuleList);
+                    hashMap.put("Formation attribuée à l'apprenant", learnerAccountService.saveLearner(learnerAccount));
+                }}
             }catch (Exception e) {
                 hashMap.put("Erreur à cause de " + e.getMessage(), null);
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(hashMap);

@@ -31,7 +31,6 @@ public class SessionController {
     @Autowired
     private TrainingModuleService trainingModuleService;
 
-
     @GetMapping("/allSession")
     public ResponseEntity<Map<String, List<Session>>> findAllSession(){
         Map<String, List<Session>> hashMap = new HashMap<String, List<Session>>();
@@ -60,7 +59,7 @@ public class SessionController {
         Map<String, Session> hashMap = new HashMap<String, Session>();
         try{
             TeacherAccount teacherAccount = teacherAccountService.findTeacherById(sessionDTO.teacherId);
-            Training training = trainingModuleService.findTrainingModuleById(sessionDTO.trainingSessionId);
+            TrainingModule training = trainingModuleService.findTrainingModuleById(sessionDTO.trainingSessionId);
             Session session = new Session(teacherAccount, sessionDTO.getStartDate(), sessionDTO.getEndDate(), sessionDTO.room, sessionDTO.status, training);
             Session sessionTest = sessionService.saveSession(session);
             System.out.println("Session test"+sessionTest);
@@ -101,7 +100,7 @@ public class SessionController {
         return ResponseEntity.ok("Session supprimé");
     }
 
-    @PostMapping("/addTeacherForASession")
+   /* @PostMapping("/addTeacherForASession")
     public ResponseEntity<Map<String, TeacherAccount>> addTeacher(@RequestParam int sessionId, @RequestParam int teacherId){
         Map<String, TeacherAccount> hashMap = new HashMap<String, TeacherAccount>();
         try {
@@ -120,5 +119,5 @@ public class SessionController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(hashMap);
         }
         return ResponseEntity.ok(hashMap);
-    }
+    }*/
 }

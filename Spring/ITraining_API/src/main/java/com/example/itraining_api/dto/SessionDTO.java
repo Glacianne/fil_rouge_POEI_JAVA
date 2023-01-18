@@ -1,7 +1,7 @@
 package com.example.itraining_api.dto;
 
 import com.example.itraining_api.entity.TeacherAccount;
-import com.example.itraining_api.entity.Training;
+
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
