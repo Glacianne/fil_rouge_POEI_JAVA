@@ -20,15 +20,15 @@ export class LearnerService {
     return this.http
       .get(`${controllerPaths.learnerControllerPath}/learner`)
       .pipe(
-        map((res: any) => {
+        map((res: Map<string,ILearnerAccount[]>) => {
           const learnerList: ILearnerAccount[] = [];
           for (const responsekey in res) {
             console.log(responsekey);
-            for (const learner in res[responsekey]) {
+            for (const learnerElem in res[responsekey]) {
               const learner: ILearnerAccount = {
-                ...res,
+                ...learnerElem,
               };
-              learnerList.push(res);
+              learnerList.push(learner);
             }
           }
           return learnerList;
@@ -60,18 +60,23 @@ export class LearnerService {
       );
   }
 
-  // public findLearnerById(id: number): Observable<ILearnerAccount> {
-  //   // return this.learnerList$
-  //   //   .getValue()
-  //   //   .find((learnerAccount) => learnerAccount.id === id);
-  //   return this.http
-  //     .get(`${controllerPaths.learnerControllerPath}/learner/${id}`)
-  //     .pipe(
-  //       map((res) => {
-  //         const learner: ILearnerAccount = {
-  //           ...res[0],
-  //         };
-  //       })
-  //     );
-  // }
+  public findLearnerById(id: number): Observable<ILearnerAccount> {
+    // return this.learnerList$
+    //   .getValue()
+    //   .find((learnerAccount) => learnerAccount.id === id);
+    return this.http
+      .get(`${controllerPaths.learnerControllerPath}/learner/${id}`)
+      .pipe(
+        map((res) => {
+          const learner: ILearnerAccount;
+          for (const responsekey in res) {
+            console.log(responsekey);
+            learner = {
+              ...res[responsekey],
+            };
+          }
+          return learner;
+        })
+      );
+  }
 }

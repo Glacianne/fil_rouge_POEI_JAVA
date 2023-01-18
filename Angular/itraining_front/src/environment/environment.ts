@@ -4,4 +4,5 @@ export const environment = {
 
 export const controllerPaths = {
   learnerControllerPath: `${environment.springURL}/learnerController`,
+  trainingModuleControllerPath: `${environment.springURL}/trainingModuleController`
 }
