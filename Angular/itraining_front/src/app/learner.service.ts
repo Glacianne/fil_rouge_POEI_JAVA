@@ -20,11 +20,11 @@ export class LearnerService {
     return this.http
       .get(`${controllerPaths.learnerControllerPath}/learner`)
       .pipe(
-        map((res: Map<string,ILearnerAccount[]>) => {
+        map((res) => {
           const learnerList: ILearnerAccount[] = [];
-          for (const responsekey in res) {
-            console.log(responsekey);
-            for (const learnerElem in res[responsekey]) {
+          for (const [message, value] of Object.entries(res)) {
+            console.log(message);
+            for (const learnerElem of value) {
               const learner: ILearnerAccount = {
                 ...learnerElem,
               };
@@ -60,7 +60,7 @@ export class LearnerService {
       );
   }
 
-  public findLearnerById(id: number): Observable<ILearnerAccount> {
+  public findLearnerById(id: number): Observable<ILearnerAccount | null> {
     // return this.learnerList$
     //   .getValue()
     //   .find((learnerAccount) => learnerAccount.id === id);
@@ -68,15 +68,46 @@ export class LearnerService {
       .get(`${controllerPaths.learnerControllerPath}/learner/${id}`)
       .pipe(
         map((res) => {
-          const learner: ILearnerAccount;
-          for (const responsekey in res) {
-            console.log(responsekey);
+          var learner: ILearnerAccount | null = null;
+          for (const [message, value] of Object.entries(res)) {
+            console.log(message);
             learner = {
-              ...res[responsekey],
+              ...value,
             };
           }
           return learner;
         })
       );
+  }
+
+  public updateLearner(
+    id: number,
+    learnerAccount: ILearnerAccount
+  ): Observable<ILearnerAccount | null> {
+    return this.http
+      .put(
+        `${controllerPaths.learnerControllerPath}/learner/${id}`,
+        learnerAccount
+      )
+      .pipe(
+        map((res) => {
+          var learner: ILearnerAccount | null = null;
+          for (const [message, value] of Object.entries(res)) {
+            console.log(message);
+            learner = {
+              ...value,
+            };
+          }
+          return learner;
+        })
+      );
+  }
+
+  public deleteLearner(id: number): void {
+    this.http
+      .delete(`${controllerPaths.learnerControllerPath}/learner/${id}`)
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }

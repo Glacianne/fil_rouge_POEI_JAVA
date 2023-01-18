@@ -3,7 +3,7 @@ import { ISession } from "./session";
 
 export interface ITrainingModule {
   id: number,
-  intitulé: string,
+  title: string,
   startDate: Date,
   endDate: Date,
   sessionList: ISession[],
