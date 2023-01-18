@@ -19,11 +19,17 @@ h1 {
   width: 16vw;
   height: 16vh;
   background: #1F2344;
+  border-width: 0;
   -webkit-border-radius: 8vw / 8vh;
   -moz-border-radius:    8vw / 8vh;
   border-radius:         8vw / 8vh;
   color: white;
   font-size: x-large;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #B93017;
+  }
 }
 
 .menu{

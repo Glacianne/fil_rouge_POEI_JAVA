@@ -11,6 +11,7 @@ import {
 } from "./inscription/inscription-formateur.component/inscription-formateur.component";
 import {ConnectionComponent} from "./connection/connection.component";
 import {TrainingFieldComponent} from "./training-field/training-field.component";
+import {ContactComponent} from "./contact/contact.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
     {path: 'learner', component: LearnerAccountComponent}
   ]},
   {path: 'formations-catalogue', component: TrainingFieldComponent},
+  {path: 'contact', component: ContactComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '**', redirectTo: 'home'},
 ];

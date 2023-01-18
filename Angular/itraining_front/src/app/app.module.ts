@@ -17,6 +17,7 @@ import {
 } from "./inscription/inscription-formateur.component/inscription-formateur.component";
 import {ConnectionComponent} from "./connection/connection.component";
 import { TrainingFieldComponent } from './training-field/training-field.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TrainingFieldComponent } from './training-field/training-field.componen
     ConnectedComponent,
     InscriptionFormateurComponent,
     ConnectionComponent,
-    TrainingFieldComponent
+    TrainingFieldComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

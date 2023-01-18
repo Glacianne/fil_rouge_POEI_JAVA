@@ -31,9 +31,9 @@ button{
   color: white;
   font-size: xx-large;
 
-  &:hover{
-    opacity: 90%;
+  &:hover {
     cursor: pointer;
+    background-color: #B93017;
   }
 }
 
@@ -56,6 +56,7 @@ button{
   border-radius:         8vw / 8vh;
   position: absolute;
   z-index: 2;
+  border-color: #1F2344;
 }
 
 .ovale-rouge{
