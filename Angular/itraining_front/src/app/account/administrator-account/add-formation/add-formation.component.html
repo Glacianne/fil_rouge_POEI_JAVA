@@ -2,21 +2,23 @@
 
   <h1>Ajouter une formation</h1>
 
-  <form>
+  <form [formGroup]="trainingModuleForm" (ngSubmit)="onSubmit()">
 
     <label for="titre">Titre*</label>
-    <input id="titre" class="input-text">
+    <input id="titre" class="input-text" formControlName="title">
     <label for="startDate">Date de début*</label>
-    <input type="date" id="startDate" class="input-text">
+    <input type="date" id="startDate" class="input-text" formControlName="startDate">
     <label for="endDate">Date de fin*</label>
-    <input type="date" id="endDate" class="input-text">
+    <input type="date" id="endDate" class="input-text" formControlName="endDate">
 
     <p class="margin-top">*champs obligatoires</p>
 
     <div class="centrer">
       <button>Valider</button>
     </div>
-
+    <div *ngIf="confirmation">
+      <p>Posted!</p>
+    </div>
   </form>
 
 </div>
