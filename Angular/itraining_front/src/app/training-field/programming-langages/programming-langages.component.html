@@ -10,7 +10,7 @@
 
   <div class="body">
     <ul class="formations">
-      <li *ngFor="let trainingModule of trainingModuleList$ | async">
+      <li *ngFor="let trainingModule of trainingModuleList$ | async" (click)="onClickTrainingModule(trainingModule.id)">
         {{trainingModule.title}}
       </li>
     </ul>

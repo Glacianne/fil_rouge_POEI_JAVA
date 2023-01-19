@@ -16,7 +16,9 @@ import {ProgrammingLangagesComponent} from "./training-field/programming-langage
 import {ReseauxComponent} from "./training-field/reseaux/reseaux.component";
 import {GestionProjetComponent} from "./training-field/gestion-projet/gestion-projet.component";
 import {SystemesExploitationComponent} from "./training-field/systemes-exploitation/systemes-exploitation.component";
-import {JavaComponent} from "./training-field/programming-langages/java/java.component";
+import {
+  ProgrammingLangagesItemComponent
+} from "./training-field/programming-langages/programming-langages-item/programming-langages-item.component";
 import {ProfileComponent} from "./account/profile/profile.component";
 
 const routes: Routes = [
@@ -24,7 +26,8 @@ const routes: Routes = [
   {path: 'inscription', component: InscriptionComponent},
   {path: 'inscription-formateur', component: InscriptionFormateurComponent},
   {path: 'connection', component: ConnectionComponent},
-  {path: 'account', component: AccountComponent,
+  {
+    path: 'account', component: AccountComponent,
     children: [
       {path: 'administrator', component: AdministratorAccountComponent},
       {path: 'teacher', component: TeacherAccountComponent},
@@ -34,13 +37,13 @@ const routes: Routes = [
   {path: 'profil', component: ProfileComponent},
   {path: 'formations-catalogue', component: TrainingFieldComponent},
   {path: 'langages-programmation', component: ProgrammingLangagesComponent},
-  {path: 'formation-java', component: JavaComponent},
+  {path: 'programming-langages-details/:id', component: ProgrammingLangagesItemComponent},
   {path: 'reseaux', component: ReseauxComponent},
   {path: 'gestion-projet', component: GestionProjetComponent},
   {path: 'systemes-exploitation', component: SystemesExploitationComponent},
   {path: 'contact', component: ContactComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: '**', redirectTo: 'home'},
+  // {path: '**', redirectTo: 'home'},
 ];
 
 @NgModule({

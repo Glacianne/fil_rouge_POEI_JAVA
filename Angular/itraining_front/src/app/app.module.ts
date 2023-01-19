@@ -22,7 +22,7 @@ import { ProgrammingLangagesComponent } from './training-field/programming-langa
 import { ReseauxComponent } from './training-field/reseaux/reseaux.component';
 import { GestionProjetComponent } from './training-field/gestion-projet/gestion-projet.component';
 import { SystemesExploitationComponent } from './training-field/systemes-exploitation/systemes-exploitation.component';
-import { JavaComponent } from './training-field/programming-langages/java/java.component';
+import { ProgrammingLangagesItemComponent } from './training-field/programming-langages/programming-langages-item/programming-langages-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './account/profile/profile.component';
 
@@ -46,7 +46,7 @@ import { ProfileComponent } from './account/profile/profile.component';
     ReseauxComponent,
     GestionProjetComponent,
     SystemesExploitationComponent,
-    JavaComponent,
+    ProgrammingLangagesItemComponent,
     ProfileComponent
   ],
   imports: [
