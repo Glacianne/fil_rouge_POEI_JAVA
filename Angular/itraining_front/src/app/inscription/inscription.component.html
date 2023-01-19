@@ -17,16 +17,20 @@
       <input id="prenom" type="text" formControlName="firstName" class="input-text"/>
       <label for="mail">Mail*</label>
       <input id="mail" type="text" formControlName="email" class="input-text">
-      <label for="tel">Téléphone*</label>
+      <label for="tel">Téléphone</label>
       <input id="tel" type="text" formControlName="phone" class="input-text">
       <label for="mdp">Mot de passe*</label>
-      <input id="mdp" type="hidden" formControlName="password" class="input-text">
+      <input id="mdp" type="password" formControlName="password" class="input-text">
       <label for="profil">Type de profil*</label>
       <select id="profil" formControlName="userType">
         <option>learner</option>
         <option>teacher</option>
         <option>administrator</option>
       </select>
+      <p>*champs obligatoires</p>
+      <div class="center">
+        <button [disabled]="!formGroup.valid">Valider</button>
+      </div>
     </form>
 
   </div>
