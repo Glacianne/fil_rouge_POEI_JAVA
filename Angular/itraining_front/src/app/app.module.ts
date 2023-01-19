@@ -28,6 +28,7 @@ import { ProfileComponent } from './account/profile/profile.component';
 import { FormationsComponent } from './account/administrator-account/formations/formations.component';
 import { DomainesFormationComponent } from './account/administrator-account/domaines-formation/domaines-formation.component';
 import { AddFormationComponent } from './account/administrator-account/add-formation/add-formation.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AddFormationComponent } from './account/administrator-account/add-forma
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
