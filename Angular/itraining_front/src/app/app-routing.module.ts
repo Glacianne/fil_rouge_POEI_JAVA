@@ -24,6 +24,7 @@ import {FormationsComponent} from "./account/administrator-account/formations/fo
 import {
   DomainesFormationComponent
 } from "./account/administrator-account/domaines-formation/domaines-formation.component";
+import {AddFormationComponent} from "./account/administrator-account/add-formation/add-formation.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -40,6 +41,7 @@ const routes: Routes = [
   },
   {path: 'profil', component: ProfileComponent},
   {path: 'liste-domaines', component: DomainesFormationComponent},
+  {path: 'ajouter-formation', component: AddFormationComponent},
   {path: 'liste-formations', component: FormationsComponent},
   {path: 'formations-catalogue', component: TrainingFieldComponent},
   {path: 'langages-programmation', component: ProgrammingLangagesComponent},

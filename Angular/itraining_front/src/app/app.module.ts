@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './account/profile/profile.component';
 import { FormationsComponent } from './account/administrator-account/formations/formations.component';
 import { DomainesFormationComponent } from './account/administrator-account/domaines-formation/domaines-formation.component';
+import { AddFormationComponent } from './account/administrator-account/add-formation/add-formation.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { DomainesFormationComponent } from './account/administrator-account/doma
     ProgrammingLangagesItemComponent,
     ProfileComponent,
     FormationsComponent,
-    DomainesFormationComponent
+    DomainesFormationComponent,
+    AddFormationComponent
   ],
   imports: [
     BrowserModule,
