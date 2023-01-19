@@ -35,6 +35,7 @@ import { FormationsLangagesProgrammationComponent } from './account/administrato
 import { FormationsReseauxComponent } from './account/administrator-account/domaines-formation/formations-reseaux/formations-reseaux.component';
 import { FormationsGestionProjetComponent } from './account/administrator-account/domaines-formation/formations-gestion-projet/formations-gestion-projet.component';
 import { FormationsSystemesExploitationComponent } from './account/administrator-account/domaines-formation/formations-systemes-exploitation/formations-systemes-exploitation.component';
+import { FormateursComponent } from './account/administrator-account/formateurs/formateurs.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { FormationsSystemesExploitationComponent } from './account/administrator
     FormationsLangagesProgrammationComponent,
     FormationsReseauxComponent,
     FormationsGestionProjetComponent,
-    FormationsSystemesExploitationComponent
+    FormationsSystemesExploitationComponent,
+    FormateursComponent
   ],
   imports: [
     BrowserModule,

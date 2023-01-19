@@ -36,6 +36,7 @@ import {
 import {
   FormationsSystemesExploitationComponent
 } from "./account/administrator-account/domaines-formation/formations-systemes-exploitation/formations-systemes-exploitation.component";
+import {FormateursComponent} from "./account/administrator-account/formateurs/formateurs.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -51,6 +52,7 @@ const routes: Routes = [
     ]
   },
   {path: 'profil', component: ProfileComponent},
+  {path: 'liste-formateurs', component: FormateursComponent},
   {path: 'liste-domaines', component: DomainesFormationComponent},
   {path: 'liste-langages', component: FormationsLangagesProgrammationComponent},
   {path: 'liste-reseaux', component: FormationsReseauxComponent},
