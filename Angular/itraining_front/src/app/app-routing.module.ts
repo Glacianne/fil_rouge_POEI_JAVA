@@ -20,11 +20,23 @@ import {
   ProgrammingLangagesItemComponent
 } from "./training-field/programming-langages/programming-langages-item/programming-langages-item.component";
 import {ProfileComponent} from "./account/profile/profile.component";
-import {FormationsComponent} from "./account/administrator-account/formations/formations.component";
 import {
   DomainesFormationComponent
 } from "./account/administrator-account/domaines-formation/domaines-formation.component";
 import {AddFormationComponent} from "./account/administrator-account/add-formation/add-formation.component";
+import {
+  FormationsLangagesProgrammationComponent
+} from "./account/administrator-account/domaines-formation/formations-langages-programmation/formations-langages-programmation.component";
+import {
+  FormationsReseauxComponent
+} from "./account/administrator-account/domaines-formation/formations-reseaux/formations-reseaux.component";
+import {
+  FormationsGestionProjetComponent
+} from "./account/administrator-account/domaines-formation/formations-gestion-projet/formations-gestion-projet.component";
+import {
+  FormationsSystemesExploitationComponent
+} from "./account/administrator-account/domaines-formation/formations-systemes-exploitation/formations-systemes-exploitation.component";
+import {FormateursComponent} from "./account/administrator-account/formateurs/formateurs.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -40,9 +52,13 @@ const routes: Routes = [
     ]
   },
   {path: 'profil', component: ProfileComponent},
+  {path: 'liste-formateurs', component: FormateursComponent},
   {path: 'liste-domaines', component: DomainesFormationComponent},
+  {path: 'liste-langages', component: FormationsLangagesProgrammationComponent},
+  {path: 'liste-reseaux', component: FormationsReseauxComponent},
+  {path: 'liste-gestion', component: FormationsGestionProjetComponent},
+  {path: 'liste-systemes', component: FormationsSystemesExploitationComponent},
   {path: 'ajouter-formation', component: AddFormationComponent},
-  {path: 'liste-formations', component: FormationsComponent},
   {path: 'formations-catalogue', component: TrainingFieldComponent},
   {path: 'langages-programmation', component: ProgrammingLangagesComponent},
   {path: 'programming-langages-details/:id', component: ProgrammingLangagesItemComponent},
