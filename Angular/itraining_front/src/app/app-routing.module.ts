@@ -20,6 +20,10 @@ import {
   ProgrammingLangagesItemComponent
 } from "./training-field/programming-langages/programming-langages-item/programming-langages-item.component";
 import {ProfileComponent} from "./account/profile/profile.component";
+import {FormationsComponent} from "./account/administrator-account/formations/formations.component";
+import {
+  DomainesFormationComponent
+} from "./account/administrator-account/domaines-formation/domaines-formation.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -35,6 +39,8 @@ const routes: Routes = [
     ]
   },
   {path: 'profil', component: ProfileComponent},
+  {path: 'liste-domaines', component: DomainesFormationComponent},
+  {path: 'liste-formations', component: FormationsComponent},
   {path: 'formations-catalogue', component: TrainingFieldComponent},
   {path: 'langages-programmation', component: ProgrammingLangagesComponent},
   {path: 'programming-langages-details/:id', component: ProgrammingLangagesItemComponent},

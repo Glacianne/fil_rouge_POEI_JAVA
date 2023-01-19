@@ -25,6 +25,8 @@ import { SystemesExploitationComponent } from './training-field/systemes-exploit
 import { ProgrammingLangagesItemComponent } from './training-field/programming-langages/programming-langages-item/programming-langages-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './account/profile/profile.component';
+import { FormationsComponent } from './account/administrator-account/formations/formations.component';
+import { DomainesFormationComponent } from './account/administrator-account/domaines-formation/domaines-formation.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { ProfileComponent } from './account/profile/profile.component';
     GestionProjetComponent,
     SystemesExploitationComponent,
     ProgrammingLangagesItemComponent,
-    ProfileComponent
+    ProfileComponent,
+    FormationsComponent,
+    DomainesFormationComponent
   ],
   imports: [
     BrowserModule,
