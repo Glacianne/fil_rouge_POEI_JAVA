@@ -10,8 +10,31 @@
 
     <h1>Inscription</h1>
 
-    <form>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <label for="nom">Nom*</label>
+      <input id="nom" type="text" formControlName="lastName" class="input-text"/>
+      <label for="prenom">Prénom*</label>
+      <input id="prenom" type="text" formControlName="firstName" class="input-text"/>
+      <label for="mail">Mail*</label>
+      <input id="mail" type="text" formControlName="email" class="input-text">
+      <label for="tel">Téléphone*</label>
+      <input id="tel" type="text" formControlName="phone" class="input-text">
+      <label for="mdp">Mot de passe*</label>
+      <input id="mdp" type="hidden" formControlName="password" class="input-text">
+      <label for="profil">Type de profil*</label>
+      <select id="profil" formControlName="userType">
+        <option>learner</option>
+        <option>teacher</option>
+        <option>administrator</option>
+      </select>
+    </form>
 
+  </div>
+
+</body>
+</html>
+
+<!--
       <label for="nom">Nom*</label>
       <input id="nom" class="input-text">
       <label for="prenom">Prénom*</label>
@@ -43,11 +66,4 @@
 
       <div class="center">
         <button>Valider</button>
-      </div>
-
-    </form>
-
-  </div>
-
-</body>
-</html>
+      </div> -->

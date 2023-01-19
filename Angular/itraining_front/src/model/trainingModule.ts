@@ -1,4 +1,4 @@
-import { ILearnerAccount } from "./learnerAccount";
+import { ILearnerAccount } from "./userAccount";
 import { ISession } from "./session";
 
 export interface ITrainingModule {

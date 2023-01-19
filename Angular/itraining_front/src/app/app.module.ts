@@ -36,6 +36,7 @@ import { FormationsReseauxComponent } from './account/administrator-account/doma
 import { FormationsGestionProjetComponent } from './account/administrator-account/domaines-formation/formations-gestion-projet/formations-gestion-projet.component';
 import { FormationsSystemesExploitationComponent } from './account/administrator-account/domaines-formation/formations-systemes-exploitation/formations-systemes-exploitation.component';
 import { FormateursComponent } from './account/administrator-account/formateurs/formateurs.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { FormateursComponent } from './account/administrator-account/formateurs/
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
