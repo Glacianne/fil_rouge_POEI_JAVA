@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JavaComponent } from './java.component';
+import { ProgrammingLangagesItemComponent } from './programming-langages-item.component';
 
 describe('JavaComponent', () => {
-  let component: JavaComponent;
-  let fixture: ComponentFixture<JavaComponent>;
+  let component: ProgrammingLangagesItemComponent;
+  let fixture: ComponentFixture<ProgrammingLangagesItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JavaComponent ]
+      declarations: [ ProgrammingLangagesItemComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(JavaComponent);
+    fixture = TestBed.createComponent(ProgrammingLangagesItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

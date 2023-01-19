@@ -27,8 +27,17 @@ export class TrainingModuleService {
           for (const [message, value] of Object.entries(res)) {
             console.log(message);
             for (const trainingModuleElem of value) {
+              console.log(trainingModuleElem.startDate)
+              console.log(trainingModuleElem.startDate.replace(' ', 'T'))
+              console.log(trainingModuleElem.endDate)
+              console.log(trainingModuleElem.endDate.substring(1))
               const trainingModule: ITrainingModule = {
-                ...trainingModuleElem,
+                id: trainingModuleElem.id,
+                title: trainingModuleElem.title,
+                startDate: trainingModuleElem.startDate.substring(1),
+                endDate: trainingModuleElem.endDate,
+                sessionList: trainingModuleElem.sessionList,
+                registeredLearnerList: trainingModuleElem.registeredLearnerList,
               };
               trainingModuleList.push(trainingModule);
             }

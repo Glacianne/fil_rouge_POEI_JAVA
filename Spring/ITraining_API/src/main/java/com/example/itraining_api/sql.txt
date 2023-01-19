@@ -13,7 +13,7 @@ INSERT INTO LearnerAccount (firstName, lastName, email, phone, password)
 
  INSERT INTO TrainingModule (title, startDate, endDate)
  VALUES
- ('python', DATE'0001/01/01', DATE'0002/02/02');
+ ('python', DATE'0001-01-01', DATE'0002-02-02');
 
  INSERT INTO Session (startDate, endDate, room, status)
  VALUES
