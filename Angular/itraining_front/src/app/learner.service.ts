@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { controllerPaths } from 'src/environment/environment';
-import { ILearnerAccount } from 'src/model/learnerAccount';
+import { ILearnerAccount } from 'src/model/userAccount';
 
 @Injectable({
   providedIn: 'root',

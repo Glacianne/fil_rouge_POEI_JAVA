@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { controllerPaths } from 'src/environment/environment';
-import { ILearnerAccount } from 'src/model/learnerAccount';
+import { ILearnerAccount } from 'src/model/userAccount';
 import { ISession } from 'src/model/session';
 import { ITrainingModule } from 'src/model/trainingModule';
 
@@ -38,12 +38,16 @@ export class TrainingModuleService {
       );
   }
 
-  public findTrainingModuleById(id: number): Observable<ITrainingModule | null> {
+  public findTrainingModuleById(
+    id: number
+  ): Observable<ITrainingModule | null> {
     // return this.learnerList$
     //   .getValue()
     //   .find((learnerAccount) => learnerAccount.id === id);
     return this.http
-      .get(`${controllerPaths.trainingModuleControllerPath}/trainingModule/${id}`)
+      .get(
+        `${controllerPaths.trainingModuleControllerPath}/trainingModule/${id}`
+      )
       .pipe(
         map((res) => {
           var learner: ITrainingModule | null = null;
@@ -57,28 +61,61 @@ export class TrainingModuleService {
         })
       );
   }
-  // public createLearner(
-  //   title: string,
-  //   startDate: Date,
-  //   endDate: Date,
-  //   sessionList: ISession[],
-  //   registeredLearnerList: ILearnerAccount[]
-  // ): Observable<any> {
-  //   return this.http
-  //     .post(`${controllerPaths.trainingModuleControllerPath}/trainingModule`, {
-  //       firstName: firstName,
-  //       lastName: lastName,
-  //       email: email,
-  //       phone: phone,
-  //       password: password,
-  //     })
-  //     .pipe(
-  //       map((res) => {
-  //         return this.findAllLearner().subscribe((res) => {
-  //           this.learnerList$.next(res);
-  //         });
-  //       })
-  //     );
-  // }
 
+  public createTrainingModule(
+    title: string,
+    startDate: Date,
+    endDate: Date,
+    sessionList: ISession[],
+    registeredLearnerList: ILearnerAccount[]
+  ): Observable<any> {
+    return this.http
+      .post(`${controllerPaths.trainingModuleControllerPath}/trainingModule`, {
+        title: title,
+        startDate: startDate,
+        endDate: endDate,
+        sessionList: sessionList,
+        registeredLearnerList: registeredLearnerList,
+      })
+      .pipe(
+        map((res) => {
+          return this.findAllTrainingModule().subscribe((res) => {
+            this.trainingModuleList$.next(res);
+          });
+        })
+      );
+  }
+
+  public updateTrainingModule(
+    id: number,
+    trainingModule: ITrainingModule
+  ): Observable<ITrainingModule | null> {
+    return this.http
+      .put(
+        `${controllerPaths.trainingModuleControllerPath}/trainingModule/${id}`,
+        trainingModule
+      )
+      .pipe(
+        map((res) => {
+          var trainingModule: ITrainingModule | null = null;
+          for (const [message, value] of Object.entries(res)) {
+            console.log(message);
+            trainingModule = {
+              ...value,
+            };
+          }
+          return trainingModule;
+        })
+      );
+  }
+
+  public deleteTrainingModule(id: number): void {
+    this.http
+      .delete(
+        `${controllerPaths.trainingModuleControllerPath}/trainingModule/${id}`
+      )
+      .subscribe((res) => {
+        console.log(res);
+      });
+  }
 }
