@@ -22,9 +22,12 @@ import { ProgrammingLangagesComponent } from './training-field/programming-langa
 import { ReseauxComponent } from './training-field/reseaux/reseaux.component';
 import { GestionProjetComponent } from './training-field/gestion-projet/gestion-projet.component';
 import { SystemesExploitationComponent } from './training-field/systemes-exploitation/systemes-exploitation.component';
-import { JavaComponent } from './training-field/programming-langages/java/java.component';
+import { ProgrammingLangagesItemComponent } from './training-field/programming-langages/programming-langages-item/programming-langages-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './account/profile/profile.component';
+import { FormationsComponent } from './account/administrator-account/formations/formations.component';
+import { DomainesFormationComponent } from './account/administrator-account/domaines-formation/domaines-formation.component';
+import { AddFormationComponent } from './account/administrator-account/add-formation/add-formation.component';
 
 @NgModule({
   declarations: [
@@ -46,8 +49,11 @@ import { ProfileComponent } from './account/profile/profile.component';
     ReseauxComponent,
     GestionProjetComponent,
     SystemesExploitationComponent,
-    JavaComponent,
-    ProfileComponent
+    ProgrammingLangagesItemComponent,
+    ProfileComponent,
+    FormationsComponent,
+    DomainesFormationComponent,
+    AddFormationComponent
   ],
   imports: [
     BrowserModule,
