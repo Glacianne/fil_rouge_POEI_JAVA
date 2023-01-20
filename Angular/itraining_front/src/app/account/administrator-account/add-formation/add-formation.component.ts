@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TrainingModuleService } from 'src/app/trainingModule.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { TrainingModuleService } from 'src/app/trainingModule.service';
 export class AddFormationComponent {
   constructor(
     private trainingModuleService: TrainingModuleService,
-    private fb: FormBuilder
+    private fb: FormBuilder, private router: Router
   ) {}
 
   trainingModuleForm: FormGroup = this.fb.group({
@@ -31,7 +32,8 @@ export class AddFormationComponent {
         []
       )
       .subscribe(() => {
-        this.confirmation = true;
+        this.router.navigate(['/langages-programmation'])
       });
+      this.confirmation = true;
   }
 }

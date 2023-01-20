@@ -18,7 +18,7 @@
       </div>
       <div class="right-part">
         <h2>Durée</h2>
-        <p>Du {{trainingModule.startDate | date : 'mediumDate'}} au {{trainingModule.endDate | date : 'mediumDate'}}</p>
+        <p>Du {{trainingModule.startDate | date : 'd MMM y'}} au {{trainingModule.endDate | date : 'd MMM y'}}</p>
         <h2 class="margin-top">Nombre de participants</h2>
         <p>{{trainingModule.registeredLearnerList.length}}</p>
       </div>
