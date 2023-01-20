@@ -10,8 +10,13 @@
 
   <div class="body">
     <ul class="formations">
-      <li *ngFor="let trainingModule of trainingModuleList$ | async" (click)="onClickTrainingModule(trainingModule.id)">
-        {{trainingModule.title}}
+      <li
+        *ngFor="let trainingModule of trainingModuleList$ | async"
+        (click)="onClickTrainingModule(trainingModule.id)"
+      >
+        {{trainingModule.title}} du
+        {{trainingModule.startDate | date : 'd MMM y'}} au
+        {{trainingModule.endDate | date : 'd MMM y'}}
       </li>
     </ul>
     <div class="image"><img src="assets/10168.jpg" /></div>
@@ -22,4 +27,8 @@
   <a routerLink="../formations-catalogue"
     >← Retour à la liste des domaines de formation</a
   >
+
+  <div class="retour">
+    <a routerLink="../ajouter-formation">ajouter une formation</a>
+  </div>
 </div>
