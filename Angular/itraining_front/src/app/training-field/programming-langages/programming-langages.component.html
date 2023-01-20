@@ -14,9 +14,7 @@
         *ngFor="let trainingModule of trainingModuleList$ | async"
         (click)="onClickTrainingModule(trainingModule.id)"
       >
-        {{trainingModule.title}} du
-        {{trainingModule.startDate | date : 'd MMM y'}} au
-        {{trainingModule.endDate | date : 'd MMM y'}}
+        {{trainingModule.title}}
       </li>
     </ul>
     <div class="image"><img src="assets/10168.jpg" /></div>
@@ -24,11 +22,7 @@
 </div>
 
 <div class="retour">
-  <a routerLink="../formations-catalogue"
+  <a routerLink="../liste-domaines"
     >← Retour à la liste des domaines de formation</a
   >
-
-  <div class="retour">
-    <a routerLink="../ajouter-formation">ajouter une formation</a>
-  </div>
 </div>
